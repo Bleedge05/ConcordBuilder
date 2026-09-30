@@ -1,0 +1,390 @@
+:root {
+    --background: #e9e9e7;
+    --panel: #f8f8f6;
+    --panel-dark: #eeeeeb;
+
+    --text: #252525;
+    --text-muted: #666666;
+
+    --border: #b8b8b4;
+
+    --accent: #65576f;
+    --accent-light: #ddd6e2;
+
+    --danger: #a43e3e;
+    --danger-light: #f4dddd;
+
+    --radius: 6px;
+}
+
+
+/* --------------------
+   PAGE
+-------------------- */
+
+body {
+    margin: 0;
+    padding: 30px;
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+
+    color: var(--text);
+    background: var(--background);
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+
+/* --------------------
+   BASIC CONTROLS
+-------------------- */
+
+input,
+select,
+button {
+    font: inherit;
+}
+
+input,
+select {
+    padding: 7px 9px;
+
+    border: 1px solid var(--border);
+    border-radius: 4px;
+
+    background: white;
+}
+
+button {
+    padding: 7px 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 4px;
+
+    background: var(--panel-dark);
+
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ddddda;
+}
+
+
+/* --------------------
+   SORCERER CARD
+-------------------- */
+.headerStats{
+    display: flex;
+    gap: 24px;
+    align-items: center;
+
+    max-width: 900px;
+    margin:14px 0 20px 0;
+    padding: 10px 14px;
+
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    font-weight: bold;
+
+
+}
+.sorcererCard {
+    max-width: 900px;
+
+    margin-top: 24px;
+    padding: 20px;
+
+    background: var(--panel);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+
+/* --------------------
+   SORCERER HEADER
+-------------------- */
+
+.sorcererHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+}
+
+.collapseButton{
+    width: 80px;
+    height: 20px;
+
+    padding: 0;
+
+    margin-bottom: 12px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+.sorcererName {
+    font-size: 18px;
+    font-weight: bold;
+
+    flex: 1;
+}
+
+.sorcererPoints {
+    white-space: nowrap;
+}
+
+
+/* --------------------
+   SELECTIONS
+-------------------- */
+
+.selectionRow {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 10px;
+}
+
+
+/* --------------------
+   INFO BUTTON
+-------------------- */
+
+.infoButton {
+    width: 30px;
+    height: 30px;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    font-weight: bold;
+}
+
+
+/* --------------------
+   INFO TEXT
+-------------------- */
+
+.infoText {
+    display: none;
+
+    margin-top: 8px;
+    margin-bottom: 12px;
+
+    padding: 10px 12px;
+
+    background: var(--panel-dark);
+
+    border-left: 4px solid var(--accent);
+
+    white-space: pre-line;
+
+    line-height: 1.4;
+}
+
+
+/* --------------------
+   CHARACTERISTICS
+-------------------- */
+
+.statsRow {
+    display: grid;
+
+    grid-template-columns: repeat(6, 1fr);
+
+    gap: 8px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.statBox {
+    text-align: center;
+
+    padding: 8px;
+
+    border: 1px solid var(--border);
+    border-radius: 4px;
+
+    background: var(--panel-dark);
+}
+
+.statLabel {
+    display: block;
+
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.statValue {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* --------------------
+   FAMILIARS / RETAINERS / ITEMS
+-------------------- */
+
+.builderSection {
+    margin-top: 18px;
+    padding-top: 14px;
+
+    border-top: 1px solid var(--border);
+}
+
+.sectionTitle{
+    margin-bottom: 8 px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+}
+
+.addButton{
+    margin-top: 6px;
+}
+
+/* .familiarItemSelect{
+    display: flex;
+    align-items: center;
+    gap: 4 px;
+    margin-bottom: 3 px;
+} */
+
+/* --------------------
+   VALIDATION
+-------------------- */
+
+.validCircleText {
+    display: none;
+
+    max-width: 900px;
+
+    margin: 10px 0;
+    padding: 10px;
+
+    background: var(--danger-light);
+
+    border: 1px solid var(--danger);
+    border-radius: var(--radius);
+
+    white-space: pre-line;
+}
+
+.deleteButton{
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+}
+
+
+/* --------------------
+   EXPORT BUTTON
+-------------------- */
+
+.exportButton {
+    font-weight: bold;
+}
+
+
+
+/* 
+body {
+        font-family: Georgia;
+        margin: 40 px;
+}
+
+h1{
+    font-size: 32 px;
+}
+
+select { 
+    font-size: 18 px;
+    padding: 10 px;
+}
+
+.itemRow{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 0;
+}
+
+.retainerRow{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 0;
+}
+
+.Custom-box1{
+    border: 2px solid black;
+    padding: 15px;
+    margin: 10px;
+
+}
+
+.infoButton{
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.itemInfo{
+    padding: 6px;
+    font-size: 14px;
+}
+
+.familiarMainRow{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.familiarItemList{
+    margin-left: 20 px;
+    margin-top: 5 px;
+    margin: 5 px;
+}
+
+.addFamiliarItem{
+    margin-left:20px;
+    margin: 5px;
+}
+
+.infoText{
+    border: 1px solid black;
+    padding: 5 px;
+    margin: 5 px;
+    display:none;
+    white-space: pre-line;
+}
+
+.validCircleText{
+    border: 1px solid black;
+    padding: 5 px;
+    margin: 5 px;
+    display:none;
+    white-space: pre-line;
+} */

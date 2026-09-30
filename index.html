@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+            <title>Concord List Builder </title>
+            <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+
+        <h1> Concord List Builder </h1>
+
+    <p><input type="text" id ="circleName" placeholder="Enter Circle Name"></p>
+    <div id ="validCircle" class ="validCircleText"></div>
+    <button type ="button" id="exportCircle" class ="exportButton"> EXPORT </button>
+    <button type ="button" id="clearAll" class ="exportButton"> CLEAR ALL </button>
+
+    <div class="headerStats">
+        <p> Total Circle Points: <span id = "circlePointTotal"> </span> 
+                /  <span id="pointAllotmentCircle"></span></p>
+        <p> Total Circle Levels: <span id = "circleLevelTotal"> </span> 
+                /  <span id="levelAllotmentCircle"></span></p>
+    </div>
+<div class = "sorcererCard">
+    <div class = "sorcerererHeader">
+        <p><input type="text" id ="sorcerer1Name" placeholder="Enter Sorcerer Name">
+        Points: <span id = "sorcererPointTotal1"> </span> /  <span id="pointAllotmentSorcerer1"></span></p>     
+        </div class="selectionRow">
+        <button type="button" class ="collapseButton" data-target="sorcererToggleBody1"> Expand </button>
+            <div id = "sorcererToggleBody1" class="sorcererBody" hidden>
+                <select id="sorcerer1">
+                    <option value="EMPTY">Choose A Class</option>
+                    <option value="Aeliothurge">Aeliothurge</option>
+                    <option value="BriarWitch">Briar Witch</option>
+                    <option value="Cryothurge">Cryothurge</option>
+                    <option value="Djinn">Djinn</option>
+                    <option value="Geomancer">Geomancer</option>
+                    <option value="Harbinger">Harbinger</option>
+                    <option value="Hierophant">Hierophant</option>
+                    <option value="Pyromancer">Pyromancer</option>
+                    <option value="SeaShaper">Sea Shaper</option>
+                </select>
+
+                <select id="aspect1" style = "display:none;">
+                    <option value = "EMPTY">Choose an Aspect</option>
+                    <option value = "Bear">Bear</option>
+                    <option value = "Owl">Owl</option>
+                    <option value = "Stag">Stag</option>
+                </select>
+                
+                <select id="sorcererLevel1">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <button type ="button" id="sorcererInfoButton1" class ="infoButton">i</button>
+                <div id ="sorcererInfoText1" class ="infoText"></div>
+
+                <p></p>
+
+                <select id="race1">
+                    <option value="EMPTY">Choose A Race</option>
+                    <option value="Asrai">Asrai</option>
+                    <option value="Bufo">Bufo</option>
+                    <option value="Dwarf">Dwarf</option>
+                    <option value="Horu">Horu</option>
+                    <option value="Human">Human</option>
+                    <option value="Magni">Magni</option>
+                    <option value="Troll">Troll</option>
+                    <option value="Venulli">Venulli</option>
+                </select>
+                <button type ="button" id="raceInfoButton1" class ="infoButton">i</button>
+                <div id ="raceInfoText1" class ="infoText"></div>
+        
+
+                <p></p>
+
+                <select id="deity1">
+                    <option value="EMPTY">Choose A Deity</option>
+                    <option value="Avar">Avar</option>
+                    <option value="GhulThur">Ghul Thur</option>
+                    <option value="Ignis">Ignis</option>
+                    <option value="Mendax">Mendax</option>
+                    <option value="Sorun">Sorun</option>
+                </select>
+                <button type ="button" id="deityInfoButton1" class ="infoButton">i</button>
+                <div id ="deityInfoText1" class ="infoText"></div>
+                
+            <div class="statsRow">
+                    <div class = "statBox">
+                        <span class = "statLabel">Health</span>
+                        <span class = "statValue" id="Health1"></span>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Strength</span>
+                        <span class = "statValue" id="Strength1"></span>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Mana</span>
+                        <span class = "statValue" id="Mana1"></span>
+                    </div>
+                            <div class = "statBox">
+                        <span class = "statLabel">Void</span>
+                        <span class = "statValue" id="Void1"></span>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Move</span>
+                        <span class = "statValue" id="Move1"></span>
+                    </div>
+                            <div class = "statBox">
+                        <span class = "statLabel">Defense</span>
+                        <span class = "statValue" id="Defense1"></span>
+                    </div>
+                </div>
+                    <div class = "buildersection">
+                        <div class="sectionTitle">Familiar</div>
+                        <div id ="familiarList1"></div>
+                        <button type ="button" id="addFamiliar1" class="addButton">+Add Familiar</button>
+                    </div>
+                    <p></p>
+                    <div class = "buildersection">
+                        <div class="sectionTitle">Retainers</div>
+                        <div id ="retainerList1"></div>
+                        <button type ="button" id="addRetainer1" class="addButton">+Add Retainer</button>
+                    </div>
+                    <p></p>
+                    <div class = "buildersection">
+                        <div class="sectionTitle">MAgic Items</div>
+                        <div id ="itemList1"></div>
+                        <button type ="button" id="addItem1" class="addButton">+Add Item</button>
+                </div>
+
+    </div>
+</div>
+
+<div class = "sorcererCard">
+        <div class = "sorcerererHeader">
+            <p><input type="text" id ="sorcerer2Name" placeholder="Enter Sorcerer Name"></p>
+
+        <p> Points: <span id = "sorcererPointTotal2"> </span> 
+            /  <span id="pointAllotmentSorcerer2"></span></p>
+        </div class="selectionRow">
+        <button type="button" class ="collapseButton" data-target="sorcererToggleBody2"> Expand </button>
+        <div id = "sorcererToggleBody2" class="sorcererBody" hidden>
+            <select id="sorcerer2">
+                <option value="EMPTY">Choose A Class</option>
+                <option value="Aeliothurge">Aeliothurge</option>
+                <option value="BriarWitch">Briar Witch</option>
+                <option value="Cryothurge">Cryothurge</option>
+                <option value="Djinn">Djinn</option>
+                <option value="Geomancer">Geomancer</option>
+                <option value="Harbinger">Harbinger</option>
+                <option value="Hierophant">Hierophant</option>
+                <option value="Pyromancer">Pyromancer</option>
+                <option value="SeaShaper">Sea Shaper</option>
+            </select>
+
+            <select id="aspect2" style = "display:none;">
+                <option value = "EMPTY">Choose an Aspect</option>
+                <option value = "Bear">Bear</option>
+                <option value = "Owl">Owl</option>
+                <option value = "Stag">Stag</option>
+            </select>
+            
+            <select id="sorcererLevel2">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <button type ="button" id="sorcererInfoButton2" class ="infoButton">i</button>
+            <div id ="sorcererInfoText2" class ="infoText"></div>
+
+            <p></p>
+
+            <select id="race2">
+                <option value="EMPTY">Choose A Race</option>
+                <option value="Asrai">Asrai</option>
+                <option value="Bufo">Bufo</option>
+                <option value="Dwarf">Dwarf</option>
+                <option value="Horu">Horu</option>
+                <option value="Human">Human</option>
+                <option value="Magni">Magni</option>
+                <option value="Troll">Troll</option>
+                <option value="Venulli">Venulli</option>
+            </select>
+            <button type ="button" id="raceInfoButton2" class ="infoButton">i</button>
+            <div id ="raceInfoText2" class ="infoText"></div>
+    
+
+            <p></p>
+
+            <select id="deity2">
+                <option value="EMPTY">Choose A Deity</option>
+                <option value="Avar">Avar</option>
+                <option value="GhulThur">Ghul Thur</option>
+                <option value="Ignis">Ignis</option>
+                <option value="Mendax">Mendax</option>
+                <option value="Sorun">Sorun</option>
+            </select>
+            <button type ="button" id="deityInfoButton2" class ="infoButton">i</button>
+            <div id ="deityInfoText2" class ="infoText"></div>
+    
+    <div class="statsRow">
+            <div class = "statBox">
+                <span class = "statLabel">Health</span>
+                <span class = "statValue" id="Health2"></span>
+            </div>
+            <div class = "statBox">
+                <span class = "statLabel">Strength</span>
+                <span class = "statValue" id="Strength2"></span>
+            </div>
+            <div class = "statBox">
+                <span class = "statLabel">Mana</span>
+                <span class = "statValue" id="Mana2"></span>
+            </div>
+                    <div class = "statBox">
+                <span class = "statLabel">Void</span>
+                <span class = "statValue" id="Void2"></span>
+            </div>
+            <div class = "statBox">
+                <span class = "statLabel">Move</span>
+                <span class = "statValue" id="Move2"></span>
+            </div>
+                    <div class = "statBox">
+                <span class = "statLabel">Defense</span>
+                <span class = "statValue" id="Defense2"></span>
+            </div>
+        </div>
+            <div class = "buildersection">
+                <div class="sectionTitle">Familiar</div>
+                <div id ="familiarList2"></div>
+                <button type ="button" id="addFamiliar2" class="addButton">+Add Familiar</button>
+            </div>
+            <p></p>
+            <div class = "buildersection">
+                <div class="sectionTitle">Retainers</div>
+                <div id ="retainerList2"></div>
+                <button type ="button" id="addRetainer2" class="addButton">+Add Retainer</button>
+            </div>
+            <p></p>
+            <div class = "buildersection">
+                <div class="sectionTitle">MAgic Items</div>
+                <div id ="itemList2"></div>
+                <button type ="button" id="addItem2" class="addButton">+Add Item</button>
+            </div>
+        </div>
+</div>
+
+<button type ="button" id="addSorcerer3" class="addButton">+Add Third Sorcerer</button>
+
+<div id = "sorcerer3Container" class = "Custom-box1" style="display: none">
+        
+        <button type ="button" id="deleteSorcerer3" class="addButton">+Remove Third Sorcerer</button>
+      <div class = "sorcererCard">
+        <div class = "sorcerererHeader">
+            <p><input type="text" id ="sorcerer3Name" placeholder="Enter Sorcerer Name"></p>
+
+        <p> Points: <span id = "sorcererPointTotal3"> </span> 
+            /  <span id="pointAllotmentSorcerer3"></span></p>
+        </div class="selectionRow">
+        <button type="button" class ="collapseButton" data-target="sorcererToggleBody3"> Collapse </button>
+        <div id = "sorcererToggleBody3" class="sorcererBody">
+            <select id="sorcerer3">
+                <option value="EMPTY">Choose A Class</option>
+                <option value="Aeliothurge">Aeliothurge</option>
+                <option value="BriarWitch">Briar Witch</option>
+                <option value="Cryothurge">Cryothurge</option>
+                <option value="Djinn">Djinn</option>
+                <option value="Geomancer">Geomancer</option>
+                <option value="Harbinger">Harbinger</option>
+                <option value="Hierophant">Hierophant</option>
+                <option value="Pyromancer">Pyromancer</option>
+                <option value="SeaShaper">Sea Shaper</option>
+            </select>
+
+            <select id="aspect3" style = "display:none;">
+                <option value = "EMPTY">Choose an Aspect</option>
+                <option value = "Bear">Bear</option>
+                <option value = "Owl">Owl</option>
+                <option value = "Stag">Stag</option>
+            </select>
+            
+            <select id="sorcererLevel3">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <button type ="button" id="sorcererInfoButton3" class ="infoButton">i</button>
+            <div id ="sorcererInfoText3" class ="infoText"></div>
+
+            <p></p>
+
+            <select id="race3">
+                <option value="EMPTY">Choose A Race</option>
+                <option value="Asrai">Asrai</option>
+                <option value="Bufo">Bufo</option>
+                <option value="Dwarf">Dwarf</option>
+                <option value="Horu">Horu</option>
+                <option value="Human">Human</option>
+                <option value="Magni">Magni</option>
+                <option value="Troll">Troll</option>
+                <option value="Venulli">Venulli</option>
+            </select>
+            <button type ="button" id="raceInfoButton3" class ="infoButton">i</button>
+            <div id ="raceInfoText3" class ="infoText"></div>
+    
+
+            <p></p>
+
+            <select id="deity3">
+                <option value="EMPTY">Choose A Deity</option>
+                <option value="Avar">Avar</option>
+                <option value="GhulThur">Ghul Thur</option>
+                <option value="Ignis">Ignis</option>
+                <option value="Mendax">Mendax</option>
+                <option value="Sorun">Sorun</option>
+            </select>
+            <button type ="button" id="deityInfoButton3" class ="infoButton">i</button>
+            <div id ="deityInfoText3" class ="infoText"></div>
+    
+    <div class="statsRow">
+            <div class = "statBox">
+                <span class = "statLabel">Health</span>
+                <span class = "statValue" id="Health3"></span>
+            </div>
+            <div class = "statBox">
+                <span class = "statLabel">Strength</span>
+                <span class = "statValue" id="Strength3"></span>
+            </div>
+            <div class = "statBox">
+                <span class = "statLabel">Mana</span>
+                <span class = "statValue" id="Mana3"></span>
+            </div>
+                    <div class = "statBox">
+                <span class = "statLabel">Void</span>
+                <span class = "statValue" id="Void3"></span>
+            </div>
+            <div class = "statBox">
+                <span class = "statLabel">Move</span>
+                <span class = "statValue" id="Move3"></span>
+            </div>
+                    <div class = "statBox">
+                <span class = "statLabel">Defense</span>
+                <span class = "statValue" id="Defense3"></span>
+            </div>
+        </div>
+            <div class = "buildersection">
+                <div class="sectionTitle">Familiar</div>
+                <div id ="familiarList3"></div>
+                <button type ="button" id="addFamiliar3" class="addButton">+Add Familiar</button>
+            </div>
+            <p></p>
+            <div class = "buildersection">
+                <div class="sectionTitle">Retainers</div>
+                <div id ="retainerList3"></div>
+                <button type ="button" id="addRetainer3" class="addButton">+Add Retainer</button>
+            </div>
+            <p></p>
+            <div class = "buildersection">
+                <div class="sectionTitle">MAgic Items</div>
+                <div id ="itemList3"></div>
+                <button type ="button" id="addItem3" class="addButton">+Add Item</button>
+            </div>
+</div>
+</div>
+</div>
+
+        <script src="libraries/pdf-lib.min.js"></script>
+        <script src="concordData.js"></script>
+        <script src="script.js"></script>
+
+
+        
+    </body>
+</html>
