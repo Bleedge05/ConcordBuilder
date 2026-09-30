@@ -346,7 +346,7 @@ const saveStart = performance.now();
 const saveEnd = performance.now();
 const finalStart = performance.now();
 
-const pdfWindow = window.open("", "_blank");
+
         //create broswer object
         const blob = new Blob(
                         [finshedPdf], { type: "application/pdf"}
@@ -355,8 +355,13 @@ const pdfWindow = window.open("", "_blank");
         const url = URL.createObjectURL(blob);
         //pdfWindow.document.body.innerHTML = "<p>4 - opening...</p>"
 
-        pdfWindow.location.href = url;
-
+        const isMobile = navigator.userAgentData?.mobile;
+        if(isMobile){
+                window.location.href = url;
+        }else{
+                const pdfWindow = window.open("", "_blank");
+                pdfWindow.location.href = url;
+        }
 const finalEnd = performance.now();
 
 console.log("Fetch :" + Number(fetchEnd-fetchStart));
