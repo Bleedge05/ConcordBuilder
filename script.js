@@ -230,6 +230,16 @@ async function exportCirclePdf(circle){
                 }
         }
 
+        //new
+        const pdfWindow = window.open("", "_blank");
+
+        if (!pdfWindow) {
+                alert("Please allow pop-ups to export the pdf.");
+        }
+
+        pdfWindow.document.body.innerHTML = "<p> Generating Concord Circle Sheet. </p>"
+        //End new
+
         //Load Template PDF
         const pdfBytes = await fetch("templates/CircleSheet.pdf")
         .then (response =>response.arrayBuffer());
@@ -322,14 +332,16 @@ async function exportCirclePdf(circle){
 
         const url = URL.createObjectURL(blob);
 
-        //create temporary link
-        const link = document.createElement("a");
-        link.href = url;
-        link.download="untitled.pdf";
+        pdfWindow.location.href = url;
 
-        window.open(url, "_blank");
+        // //create temporary link
+        // const link = document.createElement("a");
+        // link.href = url;
+        // link.download="untitled.pdf";
+
+        // window.open(url, "_blank");
         
-        URL.revokeObjectURL(url);
+        // URL.revokeObjectURL(url);
 
 
 }
