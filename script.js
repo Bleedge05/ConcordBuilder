@@ -142,7 +142,7 @@ for (const button of collapseButtons){
                 button.textContent = body.hidden ? "Expand":"Collapse";
         });
 }
-sorcerer1.addEventListener("change", function() {updateSorcerer(1)});
+sorcerer1.addEventListener("change", function() {updateCircle(1)});
 sorcerer1.addEventListener("change", function() {hideSorcererInfo(1)});
 sorcererInfoButton1.addEventListener("click",function() {showSorcererInfo(1)});
 sorcererLevel1.addEventListener("change", function() {updateCircle(1)});
@@ -207,6 +207,8 @@ function updateCircle(i){
 
 }
 
+
+
 //-------------------
 //FUNCTIONS
 //-------------------
@@ -231,108 +233,138 @@ async function exportCirclePdf(circle){
         }
 
         //new
-        const pdfWindow = window.open("", "_blank");
+        // const pdfWindow = window.open("", "_blank");
 
-        if (!pdfWindow) {
-                alert("Please allow pop-ups to export the pdf.");
-        }
+        // if (!pdfWindow) {
+        //         alert("Please allow pop-ups to export the pdf.");
+        // }
 
-        pdfWindow.document.body.innerHTML = "<p> Generating Concord Circle Sheet. </p>"
+        //pdfWindow.document.body.innerHTML = "<p>1 - Generating Concord Circle Sheet. </p>"
         //End new
 
         //Load Template PDF
+const fetchStart = performance.now();
         const pdfBytes = await fetch("templates/CircleSheet.pdf")
         .then (response =>response.arrayBuffer());
-
+const fetchEnd = performance.now();
+const loadStart = performance.now();
         const pdfDoc = await PDFLib.PDFDocument.load(pdfBytes);
+const loadEnd = performance.now();
+
+const getFieldsStart = performance.now();
 
         const form = pdfDoc.getForm();
 
+        const fields = form.getFields();
+
+        const fieldMap ={};
+
+        for (const field of fields){
+                fieldMap[field.getName()]=field;
+        }
+const getFieldsEnd = performance.now();
+const inputFieldsStart = performance.now();
         //header content
-        form.getTextField("Circle Level").setText(circleLevelTotal.textContent); 
-        form.getTextField("Circle points").setText(circlePointTotal.textContent); 
-        form.getTextField("Circle Name 1").setText(circleName.value); 
+        fieldMap["Circle Level"].setText(circleLevelTotal.textContent); 
+        fieldMap["Circle points"].setText(circlePointTotal.textContent); 
+        fieldMap["Circle Name 1"].setText(circleName.value); 
         
 
         //loop across sorcerers
         for (let xx = 0; xx <=2; xx++){
                 //Input field
-                form.getTextField("Name_"+Number(xx+1)).setText(circle.sorcerers[xx].name??""); 
-                form.getTextField("Level_"+Number(xx+1)).setText(circle.sorcerers[xx].level??"");
-                form.getTextField("Class_"+Number(xx+1)).setText(circle.sorcerers[xx].class??"");
-                form.getTextField("Race_"+Number(xx+1)).setText(circle.sorcerers[xx].race??"");
-                form.getTextField("Deity_"+Number(xx+1)).setText(deities[circle.sorcerers[xx].deity]?.name??"");
+                fieldMap["Name_"+Number(xx+1)].setText(circle.sorcerers[xx].name??""); 
+                fieldMap["Level_"+Number(xx+1)].setText(circle.sorcerers[xx].level??"");
+                fieldMap["Class_"+Number(xx+1)].setText(circle.sorcerers[xx].class??"");
+                fieldMap["Race_"+Number(xx+1)].setText(circle.sorcerers[xx].race??"");
+                fieldMap["Deity_"+Number(xx+1)].setText(deities[circle.sorcerers[xx].deity]?.name??"");
 
-                form.getTextField("Racial Ability_"+Number(xx+1)).setText(races[circle.sorcerers[xx].race]?.exportRule[0]??"");
-                form.getTextField("Deity Ability_"+Number(xx+1)).setText(deities[circle.sorcerers[xx].deity]?.exportRule[0]??"");
-                form.getTextField("Other Ability_"+Number(2*xx+1)).setText(races[circle.sorcerers[xx].race]?.exportRule[1]??"");
+                fieldMap["Racial Ability_"+Number(xx+1)].setText(races[circle.sorcerers[xx].race]?.exportRule[0]??"");
+                fieldMap["Deity Ability_"+Number(xx+1)].setText(deities[circle.sorcerers[xx].deity]?.exportRule[0]??"");
+                fieldMap["Other Ability_"+Number(2*xx+1)].setText(races[circle.sorcerers[xx].race]?.exportRule[1]??"");
                 //Reserved for Briar Witch Aspect
-                form.getTextField("Other Ability_"+Number(2*xx+2)).setText(circle.sorcerers[xx].aspect??"");
+                fieldMap["Other Ability_"+Number(2*xx+2)].setText(circle.sorcerers[xx].aspect??"");
 
-                form.getTextField("Health_"+Number(xx+1)).setText(String(circle.sorcerers[xx].characteristics.health)??"");
-                form.getTextField("Strength_"+Number(xx+1)).setText(String(circle.sorcerers[xx].characteristics.strength)??"");
-                form.getTextField("Mana_"+Number(xx+1)).setText(String(circle.sorcerers[xx].characteristics.mana)??"");
-                form.getTextField("Void_"+Number(xx+1)).setText(String(circle.sorcerers[xx].characteristics.void)??""); 
-                form.getTextField("Move_"+Number(xx+1)).setText(String(circle.sorcerers[xx].characteristics.move)??"");
-                form.getTextField("Defense_"+Number(xx+1)).setText(String(circle.sorcerers[xx].characteristics.defense)??"");    
+                fieldMap["Health_"+Number(xx+1)].setText(String(circle.sorcerers[xx].characteristics.health)??"");
+                fieldMap["Strength_"+Number(xx+1)].setText(String(circle.sorcerers[xx].characteristics.strength)??"");
+                fieldMap["Mana_"+Number(xx+1)].setText(String(circle.sorcerers[xx].characteristics.mana)??"");
+                fieldMap["Void_"+Number(xx+1)].setText(String(circle.sorcerers[xx].characteristics.void)??""); 
+                fieldMap["Move_"+Number(xx+1)].setText(String(circle.sorcerers[xx].characteristics.move)??"");
+                fieldMap["Defense_"+Number(xx+1)].setText(String(circle.sorcerers[xx].characteristics.defense)??"");    
 
-                form.getTextField("Familiar_1_"+Number(xx+1)).setText(familiars[circle.sorcerers[xx].familiar[0]]?.name??"");
-                form.getTextField('FamiliarPoints_'+Number(xx+1)).setText(String(circle.sorcerers[xx].familiarPoints??""));
+                fieldMap["Familiar_1_"+Number(xx+1)].setText(familiars[circle.sorcerers[xx].familiar[0]]?.name??"");
+                fieldMap['FamiliarPoints_'+Number(xx+1)].setText(String(circle.sorcerers[xx].familiarPoints??""));
 
-                form.getTextField("Retainer_1_"+Number(xx+1)).setText(retainers[circle.sorcerers[xx].retainers[0]]?.name??"");
-                form.getTextField("Retainer_2_"+Number(xx+1)).setText(retainers[circle.sorcerers[xx].retainers[1]]?.name??"");
+                fieldMap["Retainer_1_"+Number(xx+1)].setText(retainers[circle.sorcerers[xx].retainers[0]]?.name??"");
+                fieldMap["Retainer_2_"+Number(xx+1)].setText(retainers[circle.sorcerers[xx].retainers[1]]?.name??"");
 
                 //Magic Items
                 for (let i = 1; i <= 8; i++) {
                         const fieldName1 = 'Magic Items '+i+'_'+Number(xx+1);
                         const fieldName2 = 'Cost '+i+'_'+Number(xx+1);;
-                        form.getTextField(fieldName1).setText(items[circle.sorcerers[xx].items[i-1]]?.name??"");
-                        form.getTextField(fieldName2).setText(String(items[circle.sorcerers[xx].items[i-1]]?.cost??""));
+                        fieldMap[fieldName1].setText(items[circle.sorcerers[xx].items[i-1]]?.name??"");
+                        fieldMap[fieldName2].setText(String(items[circle.sorcerers[xx].items[i-1]]?.cost??""));
                 };
 
                 //Familiar Info on Back                       
                         //get trait
                         
-                        form.getTextField('Familiar_'+Number(1+xx)).setText(String(circle.sorcerers[xx].familiar[0]??""));
+                        fieldMap['Familiar_'+Number(1+xx)].setText(String(circle.sorcerers[xx].familiar[0]??""));
                         const famStats = getFamiliarCharacteristics(circle.sorcerers[xx]);
-                        form.getTextField('fam_Health_' + Number(1 + xx)).setText(String(famStats?.health ?? ""));
-                        form.getTextField('fam_Strength_' + Number(1 + xx)).setText(String(famStats?.strength ?? ""));
-                        form.getTextField('fam_Mana_' + Number(1 + xx)).setText(String(famStats?.mana ?? ""));
-                        form.getTextField('fam_Void_' + Number(1 + xx)).setText(String(famStats?.void ?? ""));
-                        form.getTextField('fam_Move_' + Number(1 + xx)).setText(String(famStats?.move ?? ""));
-                        form.getTextField('fam_Defense_' + Number(1 + xx)).setText(String(famStats?.defense ?? ""));
+                        fieldMap['fam_Health_' + Number(1 + xx)].setText(String(famStats?.health ?? ""));
+                        fieldMap['fam_Strength_' + Number(1 + xx)].setText(String(famStats?.strength ?? ""));
+                        fieldMap['fam_Mana_' + Number(1 + xx)].setText(String(famStats?.mana ?? ""));
+                        fieldMap['fam_Void_' + Number(1 + xx)].setText(String(famStats?.void ?? ""));
+                        fieldMap['fam_Move_' + Number(1 + xx)].setText(String(famStats?.move ?? ""));
+                        fieldMap['fam_Defense_' + Number(1 + xx)].setText(String(famStats?.defense ?? ""));
                         
-                        form.getTextField('Trait_'+Number(1+xx)).setText(String(circle.sorcerers[xx].familiar[1]??""));
-                        form.getTextField('fam_item_1_'+Number(1+xx)).setText(String(circle.sorcerers[xx].familiar[2]??""));
-                        form.getTextField('fam_item_2_'+Number(1+xx)).setText(String(circle.sorcerers[xx].familiar[3]??""));
+                        fieldMap['Trait_'+Number(1+xx)].setText(String(circle.sorcerers[xx].familiar[1]??""));
+                        fieldMap['fam_item_1_'+Number(1+xx)].setText(String(circle.sorcerers[xx].familiar[2]??""));
+                        fieldMap['fam_item_2_'+Number(1+xx)].setText(String(circle.sorcerers[xx].familiar[3]??""));
 
 
                 //Retainer Info on Back
                 for (let i = 0; i <= 1; i++) {
-                        form.getTextField('Retainer_'+Number(i+1+2*xx)).setText(retainers[circle.sorcerers[xx].retainers[i]]?.name??"");
-                        form.getTextField('ret_Health_'+Number(i+1+2*xx)).setText(String(retainers[circle.sorcerers[xx].retainers[i]]?.health??""));
-                        form.getTextField('ret_Strength_'+Number(i+1+2*xx)).setText(String(retainers[circle.sorcerers[xx].retainers[i]]?.strength??""));
-                        form.getTextField('ret_Mana_'+Number(i+1+2*xx)).setText(String(retainers[circle.sorcerers[xx].retainers[i]]?.mana??""));
-                        form.getTextField('ret_Void_'+Number(i+1+2*xx)).setText(String(retainers[circle.sorcerers[xx].retainers[i]]?.void??""));
-                        form.getTextField('ret_Move_'+Number(i+1+2*xx)).setText(String(retainers[circle.sorcerers[xx].retainers[i]]?.move??""));
-                        form.getTextField('ret_Defense_'+Number(i+1+2*xx)).setText(String(retainers[circle.sorcerers[xx].retainers[i]]?.defense??""));
-                        form.getTextField('ret_Ability_1_'+Number(i+1+2*xx)).setText(String(retainers[circle.sorcerers[xx].retainers[i]]?.abilities[0]??""));
-                        form.getTextField('ret_Ability_2_'+Number(i+1+2*xx)).setText(String(retainers[circle.sorcerers[xx].retainers[i]]?.abilities[1]??""));
+                        fieldMap['Retainer_'+Number(i+1+2*xx)].setText(retainers[circle.sorcerers[xx].retainers[i]]?.name??"");
+                        fieldMap['ret_Health_'+Number(i+1+2*xx)].setText(String(retainers[circle.sorcerers[xx].retainers[i]]?.health??""));
+                        fieldMap['ret_Strength_'+Number(i+1+2*xx)].setText(String(retainers[circle.sorcerers[xx].retainers[i]]?.strength??""));
+                        fieldMap['ret_Mana_'+Number(i+1+2*xx)].setText(String(retainers[circle.sorcerers[xx].retainers[i]]?.mana??""));
+                        fieldMap['ret_Void_'+Number(i+1+2*xx)].setText(String(retainers[circle.sorcerers[xx].retainers[i]]?.void??""));
+                        fieldMap['ret_Move_'+Number(i+1+2*xx)].setText(String(retainers[circle.sorcerers[xx].retainers[i]]?.move??""));
+                        fieldMap['ret_Defense_'+Number(i+1+2*xx)].setText(String(retainers[circle.sorcerers[xx].retainers[i]]?.defense??""));
+                        fieldMap['ret_Ability_1_'+Number(i+1+2*xx)].setText(String(retainers[circle.sorcerers[xx].retainers[i]]?.abilities[0]??""));
+                        fieldMap['ret_Ability_2_'+Number(i+1+2*xx)].setText(String(retainers[circle.sorcerers[xx].retainers[i]]?.abilities[1]??""));
 
                 };
         };
-
-           //save modified PDF
+const inputFieldsEnd = performance.now();
+        //pdfWindow.document.body.innerHTML = "<p>2 - done inputting stats. </p>"
+const saveStart = performance.now();
+        //save modified PDF
         const finshedPdf = await pdfDoc.save();
-        
+       // pdfWindow.document.body.innerHTML = "<p>3 - saving...</p>"
+const saveEnd = performance.now();
+const finalStart = performance.now();
+
+const pdfWindow = window.open("", "_blank");
         //create broswer object
         const blob = new Blob(
                         [finshedPdf], { type: "application/pdf"}
         );
 
         const url = URL.createObjectURL(blob);
+        //pdfWindow.document.body.innerHTML = "<p>4 - opening...</p>"
 
         pdfWindow.location.href = url;
+
+const finalEnd = performance.now();
+
+console.log("Fetch :" + Number(fetchEnd-fetchStart));
+console.log("load" + Number(loadEnd-loadStart));
+console.log("getField" + Number(getFieldsEnd-getFieldsStart));
+console.log("inputFields" + Number(inputFieldsEnd-inputFieldsStart));
+console.log("save" + Number(saveEnd-saveStart));
+console.log("finalstart" + Number(finalEnd-finalStart));
 
         // //create temporary link
         // const link = document.createElement("a");
