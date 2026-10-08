@@ -328,81 +328,33 @@ button:hover {
 
 
 
-/* 
-body {
-        font-family: Georgia;
-        margin: 40 px;
+@media (max-wdith: 600px) {
+
+    body{
+        padding: 12px;
+    }
+
+    .sorcererCard{
+        padding: 12px;
+    }
+
+    .statsRow{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .statBox{
+        min-width: 0;
+    }
+
+    .statButton{
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .selectionRow{
+        flex-wrap: wrap;
+        gap: 8px;
+    }
 }
-
-h1{
-    font-size: 32 px;
-}
-
-select { 
-    font-size: 18 px;
-    padding: 10 px;
-}
-
-.itemRow{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 4px 0;
-}
-
-.retainerRow{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 4px 0;
-}
-
-.Custom-box1{
-    border: 2px solid black;
-    padding: 15px;
-    margin: 10px;
-
-}
-
-.infoButton{
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.itemInfo{
-    padding: 6px;
-    font-size: 14px;
-}
-
-.familiarMainRow{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.familiarItemList{
-    margin-left: 20 px;
-    margin-top: 5 px;
-    margin: 5 px;
-}
-
-.addFamiliarItem{
-    margin-left:20px;
-    margin: 5px;
-}
-
-.infoText{
-    border: 1px solid black;
-    padding: 5 px;
-    margin: 5 px;
-    display:none;
-    white-space: pre-line;
-}
-
-.validCircleText{
-    border: 1px solid black;
-    padding: 5 px;
-    margin: 5 px;
-    display:none;
-    white-space: pre-line;
-} */
