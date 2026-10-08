@@ -12,9 +12,13 @@
         <h1> Concord List Builder </h1>
 
     <p><input type="text" id ="circleName" placeholder="Enter Circle Name"></p>
-    <div id ="validCircle" class ="validCircleText"></div>
+    <div id ="validCircle" class ="validCircleText">
+
+    </div>
+
     <button type ="button" id="exportCircle" class ="exportButton"> EXPORT </button>
     <button type ="button" id="clearAll" class ="exportButton"> CLEAR ALL </button>
+    <button type ="button" id="launchPlay" class ="exportButton"> Enter Play Mode </button>
 
     <div class="headerStats">
         <p> Total Circle Points: <span id = "circlePointTotal"> </span> 
@@ -23,12 +27,14 @@
                 /  <span id="levelAllotmentCircle"></span></p>
     </div>
 <div class = "sorcererCard">
-    <div class = "sorcerererHeader">
+    <div class = "sorcererHeader">
         <p><input type="text" id ="sorcerer1Name" placeholder="Enter Sorcerer Name">
         Points: <span id = "sorcererPointTotal1"> </span> /  <span id="pointAllotmentSorcerer1"></span></p>     
-        </div class="selectionRow">
-        <button type="button" class ="collapseButton" data-target="sorcererToggleBody1"> Expand </button>
-            <div id = "sorcererToggleBody1" class="sorcererBody" hidden>
+        <div class="selectionRow">
+            <button type="button" class ="collapseButton" data-target="sorcererToggleBody1"> Expand </button> 
+        </div>
+    </div>
+    <div id = "sorcererToggleBody1" class="sorcererBody" hidden>
                 <select id="sorcerer1">
                     <option value="EMPTY">Choose A Class</option>
                     <option value="Aeliothurge">Aeliothurge</option>
@@ -87,7 +93,7 @@
                 </select>
                 <button type ="button" id="deityInfoButton1" class ="infoButton">i</button>
                 <div id ="deityInfoText1" class ="infoText"></div>
-                
+
             <div class="statsRow">
                     <div class = "statBox">
                         <span class = "statLabel">Health</span>
@@ -130,19 +136,24 @@
                         <div class="sectionTitle">MAgic Items</div>
                         <div id ="itemList1"></div>
                         <button type ="button" id="addItem1" class="addButton">+Add Item</button>
-                </div>
+                    </div>
 
+                    </div>
+    </div>
+    </div>
     </div>
 </div>
 
 <div class = "sorcererCard">
-        <div class = "sorcerererHeader">
-            <p><input type="text" id ="sorcerer2Name" placeholder="Enter Sorcerer Name"></p>
-
-        <p> Points: <span id = "sorcererPointTotal2"> </span> 
+        <div class = "sorcererHeader">
+            <p><input type="text" id ="sorcerer2Name" placeholder="Enter Sorcerer Name">
+                Points: <span id = "sorcererPointTotal2"> </span> 
             /  <span id="pointAllotmentSorcerer2"></span></p>
-        </div class="selectionRow">
+        
+        <div class="selectionRow">
         <button type="button" class ="collapseButton" data-target="sorcererToggleBody2"> Expand </button>
+        </div>
+        </div>
         <div id = "sorcererToggleBody2" class="sorcererBody" hidden>
             <select id="sorcerer2">
                 <option value="EMPTY">Choose A Class</option>
@@ -248,20 +259,22 @@
             </div>
         </div>
 </div>
-
+</div>
 <button type ="button" id="addSorcerer3" class="addButton">+Add Third Sorcerer</button>
 
 <div id = "sorcerer3Container" class = "Custom-box1" style="display: none">
         
         <button type ="button" id="deleteSorcerer3" class="addButton">+Remove Third Sorcerer</button>
       <div class = "sorcererCard">
-        <div class = "sorcerererHeader">
-            <p><input type="text" id ="sorcerer3Name" placeholder="Enter Sorcerer Name"></p>
-
-        <p> Points: <span id = "sorcererPointTotal3"> </span> 
+        <div class = "sorcererHeader">
+            <p><input type="text" id ="sorcerer3Name" placeholder="Enter Sorcerer Name">
+                Points: <span id = "sorcererPointTotal3"> </span> 
             /  <span id="pointAllotmentSorcerer3"></span></p>
-        </div class="selectionRow">
+        
+        <div class="selectionRow">
         <button type="button" class ="collapseButton" data-target="sorcererToggleBody3"> Collapse </button>
+        </div>
+        </div>
         <div id = "sorcererToggleBody3" class="sorcererBody">
             <select id="sorcerer3">
                 <option value="EMPTY">Choose A Class</option>

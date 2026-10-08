@@ -6,6 +6,7 @@ const circlePointTotal= document.getElementById("circlePointTotal");
 const pointAllotmentCircle= document.getElementById("pointAllotmentCircle");
 const validCircle= document.getElementById("validCircle");
 const exportCircle = document.getElementById("exportCircle");
+const launchPlay = document.getElementById("launchPlay");
 const circleName = document.getElementById("circleName");
 const clearAll = document.getElementById("clearAll");
 const collapseButtons=document.querySelectorAll(".collapseButton");
@@ -121,7 +122,11 @@ const pointAllotmentSorcerer3=document.getElementById("pointAllotmentSorcerer3")
 //-------------------
 //EVENTS
 //-------------------
-exportCircle.addEventListener("click", buildCircle);
+exportCircle.addEventListener("click", function(){ 
+        const circle = buildCircle();
+        exportCirclePdf(circle);
+});
+
 clearAll.addEventListener("click", function(){
         
         for (const select of document.querySelectorAll("select")){
@@ -133,6 +138,11 @@ clearAll.addEventListener("click", function(){
 
 
         location.reload()
+});
+
+launchPlay.addEventListener("click",function(){
+        const circle = buildCircle();
+        startPlayMode(circle);
 });
 
 for (const button of collapseButtons){
@@ -157,7 +167,7 @@ addFamiliar1.addEventListener("click", function() {updateFamiliar(1)});
 addRetainer1.addEventListener("click", function() {updateRetainer(1)});
 addItem1.addEventListener("click", function() {updateItem(1)});
 
-sorcerer2.addEventListener("change", function() {updateSorcerer(2)});
+sorcerer2.addEventListener("change", function() {updateCircle(2)});
 sorcerer2.addEventListener("change", function() {hideSorcererInfo(2)});
 sorcererInfoButton2.addEventListener("click",function() {showSorcererInfo(2)});
 sorcererLevel2.addEventListener("change", function() {updateCircle(2)});
@@ -180,7 +190,7 @@ addSorcerer3.addEventListener("click", function(){
 
 deleteSorcerer3.addEventListener("click", delete3rdSorcerer);
 
-sorcerer3.addEventListener("change", function() {updateSorcerer(3)});
+sorcerer3.addEventListener("change", function() {updateCircle(3)});
 sorcerer3.addEventListener("change", function() {hideSorcererInfo(3)});
 sorcererInfoButton3.addEventListener("click",function() {showSorcererInfo(3)});
 sorcererLevel3.addEventListener("change", function() {updateCircle(3)});
@@ -219,11 +229,19 @@ function buildCircle(){
                 sorcerers.push(buildSorcererData(i));
         }
         const circle = {sorcerers: sorcerers};
+        console.log(circle);
+        return circle
+        
+}
 
-        exportCirclePdf(circle);
+function startPlayMode(circle){
+
+        sessionStorage.setItem("concordCircle", JSON.stringify(circle));
+        sessionStorage.removeItem("concordPlayState");
+        window.open("play.html", "_self");
 }
 async function exportCirclePdf(circle){
-        validateCircle;
+        validateCircle();
 
 
         if (validCircle.textContent !== "") {
@@ -435,7 +453,7 @@ function buildSorcererData(i){
         const allItemSelections = new Set();
 
         for (const itemSelect of itemSelections){
-                if (itemSelect === "EMPTY"){
+                if (itemSelect.value === "EMPTY"){
                         continue;
                 }
 
@@ -449,12 +467,13 @@ function buildSorcererData(i){
         allFamiliarItemSelections.add(familiarList.querySelector(".familiarTrait")?.value);
 
         let familiarPoints =0;
-        if (familiarList.querySelector(".familiarSelect")?.value??""){
+        const familiarValue = familiarList.querySelector(".familiarSelect")?.value;
+        if (familiarValue && familiarValue!=="EMPTY"){
                 familiarPoints+=6-Number(sorcererLevel.value);
         }
 
         for (const familiarItemSelect of familiarItemSelections){
-                if (familiarItemSelect === "EMPTY"){
+                if (familiarItemSelect.value === "EMPTY"){
                         continue;
                 }
 
@@ -478,6 +497,7 @@ function buildSorcererData(i){
         const aspect = document.getElementById("aspect"+i);
         const race = document.getElementById("race"+i);
         const deity = document.getElementById("deity"+i);
+        const sorcererPointTotal= document.getElementById("sorcererPointTotal"+i);
 
         const Health = document.getElementById("Health"+i);
         const Strength = document.getElementById("Strength"+i);
@@ -493,6 +513,7 @@ function buildSorcererData(i){
                 level: sorcererLevel.value,
                 race: race.value==="EMPTY"?"":race.value,
                 deity: deity.value==="EMPTY"?"":deity.value,
+                points: sorcererPointTotal.textContent,
 
                 characteristics: {
                         health: Number(Health.textContent),
@@ -535,7 +556,7 @@ function validateCircle() {
         const allItemSelections = new Set();
 
         for (const itemSelect of itemSelections){
-                if (itemSelect === "EMPTY"){
+                if (itemSelect.value === "EMPTY"){
                         continue;
                 }
                 if (allItemSelections.has(itemSelect.value)){
@@ -549,7 +570,7 @@ function validateCircle() {
         const allFamiliarItemSelections = new Set();
 
         for (const familiarItemSelect of familiarItemSelections){
-                if (familiarItemSelect === "EMPTY"){
+                if (familiarItemSelect.value === "EMPTY"){
                         continue;
                 }
                 if (allFamiliarItemSelections.has(familiarItemSelect.value)){
@@ -617,7 +638,7 @@ function updateSorcerer (i){
         const aspect = document.getElementById("aspect"+i);
 
         if (selectedClass.name==="Briar Witch"){
-                aspect.style.display = "block";
+                aspect.style.display = "inline-block";
         } else {
                 aspect.style.display = "none";
                 aspect.value="EMPTY";

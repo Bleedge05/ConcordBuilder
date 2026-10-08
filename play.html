@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+                    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+        <h1> Concord List Play Mode </h1>
+
+    <p><input type="text" id ="circleName" placeholder="Enter Circle Name"></p>
+    <div id ="validCircle" class ="validCircleText"></div>
+
+    <button type ="button" id="returnButton" class ="exportButton"> Return to Builder </button>
+    <button type ="button" id="refreshButton" class ="exportButton"> Refresh Game State </button>
+
+
+<div class = "sorcererCard" id="card1">
+    <div class = "sorcerererHeader">
+        <label id ="sorcererName1" class = "sorcererName">--</label>
+
+        <div class="selectionRow">
+                <label id="playClass1">Geomancer</label>    
+                
+                <button type ="button" id="sorcererInfoButton1" class ="infoButton">i</button>
+                
+
+                <label id="playRace1">Dwarf</label>
+                <button type ="button" id="raceInfoButton1" class ="infoButton">i</button>
+                
+  
+                <label id="playDeity1">GhulThur</label>
+                <button type ="button" id="deityInfoButton1" class ="infoButton">i</button>
+                <label id="playLevel1">Level 3</label>
+                <p></p>
+                <div id ="sorcererInfoText1" class ="infoText"></div>
+                <div id ="raceInfoText1" class ="infoText"></div>
+                <div id ="deityInfoText1" class ="infoText"></div>
+                <p></p>
+                Points: <span id = "sorcererPointTotal1"> </span> /  <span id="pointAllotmentSorcerer1"></span></p>     
+        </div>
+        <button type="button" class ="collapseButton" data-target="sorcererToggleBody1"> Collapse </button>
+            <div id = "sorcererToggleBody1" class="sorcererBody">
+                <input type="checkbox" class="usedCheckBox" data-sorcerer = "0" data-key = "0"><span id="raceAbility1"> </span>
+                <p></p>
+                <input type="checkbox" class="usedCheckBox" data-sorcerer = "0" data-key = "1"><span id="deityAbility1"> </span>
+                <p></p>
+                <input type="checkbox" class="usedCheckBox" data-sorcerer = "0" data-key = "2"><span id="otherAbility1"> </span>    
+            <div class="statsRow">
+                    <div class = "statBox">
+                        <span class = "statLabel">Health</span>
+                        <span class = "statValue" id="Health1">12</span>
+                        <button id="incHealth1" class = "statButton" data-stat="Health" data-delta="1" data-sorc="1">+</button>
+                        <span class = "currentStatValue" id="currentHealth1">9</span>
+                        <button id="decHealth1" class = "statButton" data-stat="Health" data-delta="-1" data-sorc="1">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Strength</span>
+                        <span class = "statValue" id="Strength1">5</span>
+                        <button id="incStrength1" class = "statButton" data-stat="Strength" data-delta="1" data-sorc="1">+</button>
+                        <span class = "currentStatValue" id="currentStrength1">5</span>
+                        <button id="decStrength1" class = "statButton" data-stat="Strength" data-delta="-1" data-sorc="1">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Mana</span>
+                        <span class = "statValue" id="Mana1">9</span>
+                        <button id="incMana1" class = "statButton" data-stat="Mana" data-delta="1" data-sorc="1">+</button>
+                        <span class = "currentStatValue" id="currentMana1">8</span>
+                        <button id="decMana1" class = "statButton" data-stat="Mana" data-delta="-1" data-sorc="1">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Void</span>
+                        <span class = "statValue" id="Void1">3</span>
+                        <button id="incVoid1" class = "statButton" data-stat="Void" data-delta="1" data-sorc="1">+</button>
+                        <span class = "currentStatValue" id="currentVoid1">5</span>
+                        <button id="decVoid1" class = "statButton" data-stat="Void" data-delta="-1" data-sorc="1">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Move</span>
+                        <span class = "statValue" id="Move1">6</span>
+                        <button id="incMove1" class = "statButton" data-stat="Move" data-delta="1" data-sorc="1">+</button>
+                        <span class = "currentStatValue" id="currentMove1">5</span>
+                        <button id="decMove1" class = "statButton" data-stat="Move" data-delta="-1" data-sorc="1">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Defense</span>
+                        <span class = "statValue" id="Defense1">4</span>
+                        <button id="incDefense1" class = "statButton" data-stat="Defense" data-delta="1" data-sorc="1">+</button>
+                        <span class = "currentStatValue" id="currentDefense1">4</span>
+                        <button id="decDefense1" class = "statButton" data-stat="Defense" data-delta="-1" data-sorc="1">-</button>
+                    </div>
+                </div>
+            
+            <div id ="familiarList1">
+                <div class="sectionTitle">Familiar - 
+                    <span id= "famName1"></span> :: 
+                    <span id= "famTrait1"></span>
+                    <button type ="button" id="famInfoButton1" class ="infoButton">i</button>
+                    <div id ="famInfoText1" class ="infoText"></div>
+                </div>
+                
+                <div class="statsRow">
+                    <div class = "statBox">
+                        <span class = "statLabel">Health</span>
+                        <span class = "statValue" id="Health11">12</span>
+                        <button id="incHealth1" class = "statButton" data-stat="Health" data-delta="1" data-sorc="11">+</button>
+                        <span class = "currentStatValue" id="currentHealth11">9</span>
+                        <button id="decHealth1" class = "statButton" data-stat="Health" data-delta="-1" data-sorc="11">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Strength</span>
+                        <span class = "statValue" id="Strength11">5</span>
+                        <button id="incStrength1" class = "statButton" data-stat="Strength" data-delta="1" data-sorc="11">+</button>
+                        <span class = "currentStatValue" id="currentStrength11">5</span>
+                        <button id="decStrength1" class = "statButton" data-stat="Strength" data-delta="-1" data-sorc="11">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Mana</span>
+                        <span class = "statValue" id="Mana11">9</span>
+                        <button id="incMana1" class = "statButton" data-stat="Mana" data-delta="1" data-sorc="11">+</button>
+                        <span class = "currentStatValue" id="currentMana11">8</span>
+                        <button id="decMana1" class = "statButton" data-stat="Mana" data-delta="-1" data-sorc="11">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Void</span>
+                        <span class = "statValue" id="Void11">3</span>
+                        <button id="incVoid1" class = "statButton" data-stat="Void" data-delta="1" data-sorc="11">+</button>
+                        <span class = "currentStatValue" id="currentVoid11">5</span>
+                        <button id="decVoid1" class = "statButton" data-stat="Void" data-delta="-1" data-sorc="11">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Move</span>
+                        <span class = "statValue" id="Move11">6</span>
+                        <button id="incMove1" class = "statButton" data-stat="Move" data-delta="1" data-sorc="11">+</button>
+                        <span class = "currentStatValue" id="currentMove11">5</span>
+                        <button id="decMove1" class = "statButton" data-stat="Move" data-delta="-1" data-sorc="11">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Defense</span>
+                        <span class = "statValue" id="Defense11">4</span>
+                        <button id="incDefense1" class = "statButton" data-stat="Defense" data-delta="1" data-sorc="11">+</button>
+                        <span class = "currentStatValue" id="currentDefense11">4</span>
+                        <button id="decDefense1" class = "statButton" data-stat="Defense" data-delta="-1" data-sorc="11">-</button>
+                    </div>
+                </div>
+                <div id="familiarItemsDiv11" class="playItemClass"></div>
+            </div>    
+    <p></p>
+    <div id ="retainerList1">
+                    <div class="sectionTitle">Retainer - 
+                        <span id="retName1"></span>
+                        <button type ="button" id="retInfoButton1" class ="infoButton">i</button>
+                        <div id ="retInfoText1" class ="infoText"></div>
+                    </div>
+                    
+                    <div class="statsRow">
+                            <div class = "statBox">
+                            <span class = "statLabel">Health</span>
+                            <span class = "statValue" id="Health21">12</span>
+                            <button id="incHealth1" class = "statButton" data-stat="Health" data-delta="1" data-sorc="21">+</button>
+                            <span class = "currentStatValue" id="currentHealth21">9</span>
+                            <button id="decHealth1" class = "statButton" data-stat="Health" data-delta="-1" data-sorc="21">-</button>
+                        </div>
+                        <div class = "statBox">
+                            <span class = "statLabel">Strength</span>
+                            <span class = "statValue" id="Strength21">5</span>
+                            <button id="incStrength1" class = "statButton" data-stat="Strength" data-delta="1" data-sorc="21">+</button>
+                            <span class = "currentStatValue" id="currentStrength21">5</span>
+                            <button id="decStrength1" class = "statButton" data-stat="Strength" data-delta="-1" data-sorc="21">-</button>
+                        </div>
+                        <div class = "statBox">
+                            <span class = "statLabel">Mana</span>
+                            <span class = "statValue" id="Mana21">9</span>
+                            <button id="incMana1" class = "statButton" data-stat="Mana" data-delta="1" data-sorc="21">+</button>
+                            <span class = "currentStatValue" id="currentMana21">8</span>
+                            <button id="decMana1" class = "statButton" data-stat="Mana" data-delta="-1" data-sorc="21">-</button>
+                        </div>
+                        <div class = "statBox">
+                            <span class = "statLabel">Void</span>
+                            <span class = "statValue" id="Void21">3</span>
+                            <button id="incVoid1" class = "statButton" data-stat="Void" data-delta="1" data-sorc="21">+</button>
+                            <span class = "currentStatValue" id="currentVoid21">5</span>
+                            <button id="decVoid1" class = "statButton" data-stat="Void" data-delta="-1" data-sorc="21">-</button>
+                        </div>
+                        <div class = "statBox">
+                            <span class = "statLabel">Move</span>
+                            <span class = "statValue" id="Move21">6</span>
+                            <button id="incMove1" class = "statButton" data-stat="Move" data-delta="1" data-sorc="21">+</button>
+                            <span class = "currentStatValue" id="currentMove21">5</span>
+                            <button id="decMove1" class = "statButton" data-stat="Move" data-delta="-1" data-sorc="21">-</button>
+                        </div>
+                        <div class = "statBox">
+                            <span class = "statLabel">Defense</span>
+                            <span class = "statValue" id="Defense21">4</span>
+                            <button id="incDefense1" class = "statButton" data-stat="Defense" data-delta="1" data-sorc="21">+</button>
+                            <span class = "currentStatValue" id="currentDefense21">4</span>
+                            <button id="decDefense1" class = "statButton" data-stat="Defense" data-delta="-1" data-sorc="21">-</button>
+                        </div>
+                        </div>
+    </div>
+    <div id ="retainerList2">
+                <div class="sectionTitle">Retainer - 
+                    <span id="retName2"></span>
+                    <button type ="button" id="retInfoButton2" class ="infoButton">i</button>
+                    <div id ="retInfoText2" class ="infoText"></div>
+                </div>
+                
+                <div class="statsRow">
+                        <div class = "statBox">
+                        <span class = "statLabel">Health</span>
+                        <span class = "statValue" id="Health31">12</span>
+                        <button id="incHealth1" class = "statButton" data-stat="Health" data-delta="1" data-sorc="31">+</button>
+                        <span class = "currentStatValue" id="currentHealth31">9</span>
+                        <button id="decHealth1" class = "statButton" data-stat="Health" data-delta="-1" data-sorc="31">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Strength</span>
+                        <span class = "statValue" id="Strength31">5</span>
+                        <button id="incStrength1" class = "statButton" data-stat="Strength" data-delta="1" data-sorc="31">+</button>
+                        <span class = "currentStatValue" id="currentStrength31">5</span>
+                        <button id="decStrength1" class = "statButton" data-stat="Strength" data-delta="-1" data-sorc="31">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Mana</span>
+                        <span class = "statValue" id="Mana31">9</span>
+                        <button id="incMana1" class = "statButton" data-stat="Mana" data-delta="1" data-sorc="31">+</button>
+                        <span class = "currentStatValue" id="currentMana31">8</span>
+                        <button id="decMana1" class = "statButton" data-stat="Mana" data-delta="-1" data-sorc="31">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Void</span>
+                        <span class = "statValue" id="Void31">3</span>
+                        <button id="incVoid1" class = "statButton" data-stat="Void" data-delta="1" data-sorc="31">+</button>
+                        <span class = "currentStatValue" id="currentVoid31">5</span>
+                        <button id="decVoid1" class = "statButton" data-stat="Void" data-delta="-1" data-sorc="31">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Move</span>
+                        <span class = "statValue" id="Move31">6</span>
+                        <button id="incMove1" class = "statButton" data-stat="Move" data-delta="1" data-sorc="31">+</button>
+                        <span class = "currentStatValue" id="currentMove31">5</span>
+                        <button id="decMove1" class = "statButton" data-stat="Move" data-delta="-1" data-sorc="31">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Defense</span>
+                        <span class = "statValue" id="Defense31">4</span>
+                        <button id="incDefense1" class = "statButton" data-stat="Defense" data-delta="1" data-sorc="31">+</button>
+                        <span class = "currentStatValue" id="currentDefense31">4</span>
+                        <button id="decDefense1" class = "statButton" data-stat="Defense" data-delta="-1" data-sorc="31">-</button>
+                    </div>
+                    </div>
+    </div>
+
+    <p></p>
+
+    <div class="sectionTitle">Magic Items </div>
+        <div id="magicItemsDiv1" class="playItemClass"></div>
+    </div>
+</div>
+</div>
+<div class = "sorcererCard" id="card2">
+    <div class = "sorcerererHeader">
+        <label id ="sorcererName2" class = "sorcererName">--</label>
+
+        <div class="selectionRow">
+                <label id="playClass2">Geomancer</label>    
+                
+                <button type ="button" id="sorcererInfoButton2" class ="infoButton">i</button>
+                
+
+                <label id="playRace2">Dwarf</label>
+                <button type ="button" id="raceInfoButton2" class ="infoButton">i</button>
+                
+  
+                <label id="playDeity2">GhulThur</label>
+                <button type ="button" id="deityInfoButton2" class ="infoButton">i</button>
+                <label id="playLevel2">Level 3</label>
+                <p></p>
+                <div id ="sorcererInfoText2" class ="infoText"></div>
+                <div id ="raceInfoText2" class ="infoText"></div>
+                <div id ="deityInfoText2" class ="infoText"></div>
+                <p></p>
+                Points: <span id = "sorcererPointTotal2"> </span> /  <span id="pointAllotmentSorcerer2"></span></p>     
+        </div>
+        <button type="button" class ="collapseButton" data-target="sorcererToggleBody2"> Collapse </button>
+            <div id = "sorcererToggleBody2" class="sorcererBody">
+                <input type="checkbox" class="usedCheckBox" data-sorcerer = "1" data-key = "0"><span id="raceAbility2"> </span>
+                <p></p>
+                <input type="checkbox" class="usedCheckBox" data-sorcerer = "1" data-key = "1"><span id="deityAbility2"> </span>
+                <p></p>
+                <input type="checkbox" class="usedCheckBox" data-sorcerer = "1" data-key = "2"><span id="otherAbility2"> </span>    
+            <div class="statsRow">
+                    <div class = "statBox">
+                        <span class = "statLabel">Health</span>
+                        <span class = "statValue" id="Health2">12</span>
+                        <button id="incHealth2" class = "statButton" data-stat="Health" data-delta="1" data-sorc="2">+</button>
+                        <span class = "currentStatValue" id="currentHealth2">9</span>
+                        <button id="decHealth2" class = "statButton" data-stat="Health" data-delta="-1" data-sorc="2">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Strength</span>
+                        <span class = "statValue" id="Strength2">5</span>
+                        <button id="incStrength2" class = "statButton" data-stat="Strength" data-delta="1" data-sorc="2">+</button>
+                        <span class = "currentStatValue" id="currentStrength2">5</span>
+                        <button id="decStrength2" class = "statButton" data-stat="Strength" data-delta="-1" data-sorc="2">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Mana</span>
+                        <span class = "statValue" id="Mana2">9</span>
+                        <button id="incMana2" class = "statButton" data-stat="Mana" data-delta="1" data-sorc="2">+</button>
+                        <span class = "currentStatValue" id="currentMana2">8</span>
+                        <button id="decMana2" class = "statButton" data-stat="Mana" data-delta="-1" data-sorc="2">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Void</span>
+                        <span class = "statValue" id="Void2">3</span>
+                        <button id="incVoid2" class = "statButton" data-stat="Void" data-delta="1" data-sorc="2">+</button>
+                        <span class = "currentStatValue" id="currentVoid2">5</span>
+                        <button id="decVoid2" class = "statButton" data-stat="Void" data-delta="-1" data-sorc="2">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Move</span>
+                        <span class = "statValue" id="Move2">6</span>
+                        <button id="incMove2" class = "statButton" data-stat="Move" data-delta="1" data-sorc="2">+</button>
+                        <span class = "currentStatValue" id="currentMove2">5</span>
+                        <button id="decMove2" class = "statButton" data-stat="Move" data-delta="-1" data-sorc="2">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Defense</span>
+                        <span class = "statValue" id="Defense2">4</span>
+                        <button id="incDefense2" class = "statButton" data-stat="Defense" data-delta="1" data-sorc="2">+</button>
+                        <span class = "currentStatValue" id="currentDefense2">4</span>
+                        <button id="decDefense2" class = "statButton" data-stat="Defense" data-delta="-1" data-sorc="2">-</button>
+                    </div>
+                </div>
+            
+            <div id ="familiarList2">
+                <div class="sectionTitle">Familiar - 
+                    <span id= "famName2"></span> :: 
+                    <span id= "famTrait2"></span>
+                    <button type ="button" id="famInfoButton2" class ="infoButton">i</button>
+                    <div id ="famInfoText2" class ="infoText"></div>
+                </div>
+                
+                <div class="statsRow">
+                    <div class = "statBox">
+                        <span class = "statLabel">Health</span>
+                        <span class = "statValue" id="Health12">12</span>
+                        <button id="incHealth2" class = "statButton" data-stat="Health" data-delta="1" data-sorc="12">+</button>
+                        <span class = "currentStatValue" id="currentHealth12">9</span>
+                        <button id="decHealth2" class = "statButton" data-stat="Health" data-delta="-1" data-sorc="12">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Strength</span>
+                        <span class = "statValue" id="Strength12">5</span>
+                        <button id="incStrength2" class = "statButton" data-stat="Strength" data-delta="1" data-sorc="12">+</button>
+                        <span class = "currentStatValue" id="currentStrength12">5</span>
+                        <button id="decStrength2" class = "statButton" data-stat="Strength" data-delta="-1" data-sorc="12">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Mana</span>
+                        <span class = "statValue" id="Mana12">9</span>
+                        <button id="incMana2" class = "statButton" data-stat="Mana" data-delta="1" data-sorc="12">+</button>
+                        <span class = "currentStatValue" id="currentMana12">8</span>
+                        <button id="decMana2" class = "statButton" data-stat="Mana" data-delta="-1" data-sorc="12">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Void</span>
+                        <span class = "statValue" id="Void12">3</span>
+                        <button id="incVoid2" class = "statButton" data-stat="Void" data-delta="1" data-sorc="12">+</button>
+                        <span class = "currentStatValue" id="currentVoid12">5</span>
+                        <button id="decVoid2" class = "statButton" data-stat="Void" data-delta="-1" data-sorc="12">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Move</span>
+                        <span class = "statValue" id="Move12">6</span>
+                        <button id="incMove2" class = "statButton" data-stat="Move" data-delta="1" data-sorc="12">+</button>
+                        <span class = "currentStatValue" id="currentMove12">5</span>
+                        <button id="decMove2" class = "statButton" data-stat="Move" data-delta="-1" data-sorc="12">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Defense</span>
+                        <span class = "statValue" id="Defense12">4</span>
+                        <button id="incDefense2" class = "statButton" data-stat="Defense" data-delta="1" data-sorc="12">+</button>
+                        <span class = "currentStatValue" id="currentDefense12">4</span>
+                        <button id="decDefense2" class = "statButton" data-stat="Defense" data-delta="-1" data-sorc="12">-</button>
+                    </div>
+                </div>
+                <div id="familiarItemsDiv12" class="playItemClass"></div>
+            </div>    
+<p></p>
+<div id ="retainerList3">
+                <div class="sectionTitle">Retainer - 
+                    <span id="retName3"></span>
+                    <button type ="button" id="retInfoButton3" class ="infoButton">i</button>
+                    <div id ="retInfoText3" class ="infoText"></div>
+                </div>
+                
+                <div class="statsRow">
+                        <div class = "statBox">
+                        <span class = "statLabel">Health</span>
+                        <span class = "statValue" id="Health22">22</span>
+                        <button id="incHealth2" class = "statButton" data-stat="Health" data-delta="1" data-sorc="22">+</button>
+                        <span class = "currentStatValue" id="currentHealth22">9</span>
+                        <button id="decHealth2" class = "statButton" data-stat="Health" data-delta="-1" data-sorc="22">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Strength</span>
+                        <span class = "statValue" id="Strength22">5</span>
+                        <button id="incStrength2" class = "statButton" data-stat="Strength" data-delta="1" data-sorc="22">+</button>
+                        <span class = "currentStatValue" id="currentStrength22">5</span>
+                        <button id="decStrength2" class = "statButton" data-stat="Strength" data-delta="-1" data-sorc="22">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Mana</span>
+                        <span class = "statValue" id="Mana22">9</span>
+                        <button id="incMana2" class = "statButton" data-stat="Mana" data-delta="1" data-sorc="22">+</button>
+                        <span class = "currentStatValue" id="currentMana22">8</span>
+                        <button id="decMana2" class = "statButton" data-stat="Mana" data-delta="-1" data-sorc="22">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Void</span>
+                        <span class = "statValue" id="Void22">3</span>
+                        <button id="incVoid2" class = "statButton" data-stat="Void" data-delta="1" data-sorc="22">+</button>
+                        <span class = "currentStatValue" id="currentVoid22">5</span>
+                        <button id="decVoid2" class = "statButton" data-stat="Void" data-delta="-1" data-sorc="22">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Move</span>
+                        <span class = "statValue" id="Move22">6</span>
+                        <button id="incMove2" class = "statButton" data-stat="Move" data-delta="1" data-sorc="22">+</button>
+                        <span class = "currentStatValue" id="currentMove22">5</span>
+                        <button id="decMove2" class = "statButton" data-stat="Move" data-delta="-1" data-sorc="22">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Defense</span>
+                        <span class = "statValue" id="Defense22">4</span>
+                        <button id="incDefense2" class = "statButton" data-stat="Defense" data-delta="1" data-sorc="22">+</button>
+                        <span class = "currentStatValue" id="currentDefense22">4</span>
+                        <button id="decDefense2" class = "statButton" data-stat="Defense" data-delta="-1" data-sorc="22">-</button>
+                    </div>
+                    </div>
+</div>
+<div id ="retainerList4">
+                <div class="sectionTitle">Retainer - 
+                    <span id="retName4"></span>
+                    <button type ="button" id="retInfoButton4" class ="infoButton">i</button>
+                    <div id ="retInfoText4" class ="infoText"></div>
+                </div>
+                
+                <div class="statsRow">
+                        <div class = "statBox">
+                        <span class = "statLabel">Health</span>
+                        <span class = "statValue" id="Health32">12</span>
+                        <button id="incHealth2" class = "statButton" data-stat="Health" data-delta="1" data-sorc="32">+</button>
+                        <span class = "currentStatValue" id="currentHealth32">9</span>
+                        <button id="decHealth2" class = "statButton" data-stat="Health" data-delta="-1" data-sorc="32">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Strength</span>
+                        <span class = "statValue" id="Strength32">5</span>
+                        <button id="incStrength2" class = "statButton" data-stat="Strength" data-delta="1" data-sorc="32">+</button>
+                        <span class = "currentStatValue" id="currentStrength32">5</span>
+                        <button id="decStrength2" class = "statButton" data-stat="Strength" data-delta="-1" data-sorc="32">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Mana</span>
+                        <span class = "statValue" id="Mana32">9</span>
+                        <button id="incMana2" class = "statButton" data-stat="Mana" data-delta="1" data-sorc="32">+</button>
+                        <span class = "currentStatValue" id="currentMana32">8</span>
+                        <button id="decMana2" class = "statButton" data-stat="Mana" data-delta="-1" data-sorc="32">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Void</span>
+                        <span class = "statValue" id="Void32">3</span>
+                        <button id="incVoid2" class = "statButton" data-stat="Void" data-delta="1" data-sorc="32">+</button>
+                        <span class = "currentStatValue" id="currentVoid32">5</span>
+                        <button id="decVoid2" class = "statButton" data-stat="Void" data-delta="-1" data-sorc="32">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Move</span>
+                        <span class = "statValue" id="Move32">6</span>
+                        <button id="incMove2" class = "statButton" data-stat="Move" data-delta="1" data-sorc="32">+</button>
+                        <span class = "currentStatValue" id="currentMove32">5</span>
+                        <button id="decMove2" class = "statButton" data-stat="Move" data-delta="-1" data-sorc="32">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Defense</span>
+                        <span class = "statValue" id="Defense32">4</span>
+                        <button id="incDefense2" class = "statButton" data-stat="Defense" data-delta="1" data-sorc="32">+</button>
+                        <span class = "currentStatValue" id="currentDefense32">4</span>
+                        <button id="decDefense2" class = "statButton" data-stat="Defense" data-delta="-1" data-sorc="32">-</button>
+                    </div>
+                    </div>
+</div>
+
+<p></p>
+
+    <div class="sectionTitle">Magic Items </div>
+        <div id="magicItemsDiv2" class="playItemClass"></div>
+</div>
+</div>
+</div>
+<div class = "sorcererCard" id="card3">
+    <div class = "sorcerererHeader">
+        <label id ="sorcererName3" class = "sorcererName">--</label>
+
+        <div class="selectionRow">
+                <label id="playClass3">Geomancer</label>    
+                
+                <button type ="button" id="sorcererInfoButton3" class ="infoButton">i</button>
+                
+
+                <label id="playRace3">Dwarf</label>
+                <button type ="button" id="raceInfoButton3" class ="infoButton">i</button>
+                
+  
+                <label id="playDeity3">GhulThur</label>
+                <button type ="button" id="deityInfoButton3" class ="infoButton">i</button>
+                <label id="playLevel3">Level 3</label>
+                <p></p>
+                <div id ="sorcererInfoText3" class ="infoText"></div>
+                <div id ="raceInfoText3" class ="infoText"></div>
+                <div id ="deityInfoText3" class ="infoText"></div>
+                <p></p>
+                Points: <span id = "sorcererPointTotal3"> </span> /  <span id="pointAllotmentSorcerer3"></span></p>     
+        </div>  
+        <button type="button" class ="collapseButton" data-target="sorcererToggleBody3"> Collapse </button>
+            <div id = "sorcererToggleBody3" class="sorcererBody">
+                <input type="checkbox" class="usedCheckBox" data-sorcerer = "2" data-key = "0"><span id="raceAbility3"> </span>
+                <p></p>
+                <input type="checkbox" class="usedCheckBox" data-sorcerer = "2" data-key = "1"><span id="deityAbility3"> </span>
+                <p></p>
+                <input type="checkbox" class="usedCheckBox" data-sorcerer = "2" data-key = "2"><span id="otherAbility3"> </span>    
+            <div class="statsRow">
+                    <div class = "statBox">
+                        <span class = "statLabel">Health</span>
+                        <span class = "statValue" id="Health3">13</span>
+                        <button id="incHealth3" class = "statButton" data-stat="Health" data-delta="1" data-sorc="3">+</button>
+                        <span class = "currentStatValue" id="currentHealth3">9</span>
+                        <button id="decHealth3" class = "statButton" data-stat="Health" data-delta="-1" data-sorc="3">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Strength</span>
+                        <span class = "statValue" id="Strength3">5</span>
+                        <button id="incStrength3" class = "statButton" data-stat="Strength" data-delta="1" data-sorc="3">+</button>
+                        <span class = "currentStatValue" id="currentStrength3">5</span>
+                        <button id="decStrength3" class = "statButton" data-stat="Strength" data-delta="-1" data-sorc="3">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Mana</span>
+                        <span class = "statValue" id="Mana3">9</span>
+                        <button id="incMana3" class = "statButton" data-stat="Mana" data-delta="1" data-sorc="3">+</button>
+                        <span class = "currentStatValue" id="currentMana3">8</span>
+                        <button id="decMana3" class = "statButton" data-stat="Mana" data-delta="-1" data-sorc="3">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Void</span>
+                        <span class = "statValue" id="Void3">3</span>
+                        <button id="incVoid3" class = "statButton" data-stat="Void" data-delta="1" data-sorc="3">+</button>
+                        <span class = "currentStatValue" id="currentVoid3">5</span>
+                        <button id="decVoid3" class = "statButton" data-stat="Void" data-delta="-1" data-sorc="3">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Move</span>
+                        <span class = "statValue" id="Move3">6</span>
+                        <button id="incMove3" class = "statButton" data-stat="Move" data-delta="1" data-sorc="3">+</button>
+                        <span class = "currentStatValue" id="currentMove3">5</span>
+                        <button id="decMove3" class = "statButton" data-stat="Move" data-delta="-1" data-sorc="3">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Defense</span>
+                        <span class = "statValue" id="Defense3">4</span>
+                        <button id="incDefense3" class = "statButton" data-stat="Defense" data-delta="1" data-sorc="3">+</button>
+                        <span class = "currentStatValue" id="currentDefense3">4</span>
+                        <button id="decDefense3" class = "statButton" data-stat="Defense" data-delta="-1" data-sorc="3">-</button>
+                    </div>
+                </div>
+            
+            <div id ="familiarList3">
+                <div class="sectionTitle">Familiar - 
+                    <span id= "famName3"></span> :: 
+                    <span id= "famTrait3"></span>
+                    <button type ="button" id="famInfoButton3" class ="infoButton">i</button>
+                    <div id ="famInfoText3" class ="infoText"></div>
+                </div>
+                
+                <div class="statsRow">
+                    <div class = "statBox">
+                        <span class = "statLabel">Health</span>
+                        <span class = "statValue" id="Health13">13</span>
+                        <button id="incHealth3" class = "statButton" data-stat="Health" data-delta="1" data-sorc="13">+</button>
+                        <span class = "currentStatValue" id="currentHealth13">9</span>
+                        <button id="decHealth3" class = "statButton" data-stat="Health" data-delta="-1" data-sorc="13">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Strength</span>
+                        <span class = "statValue" id="Strength13">5</span>
+                        <button id="incStrength3" class = "statButton" data-stat="Strength" data-delta="1" data-sorc="13">+</button>
+                        <span class = "currentStatValue" id="currentStrength13">5</span>
+                        <button id="decStrength3" class = "statButton" data-stat="Strength" data-delta="-1" data-sorc="13">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Mana</span>
+                        <span class = "statValue" id="Mana13">9</span>
+                        <button id="incMana3" class = "statButton" data-stat="Mana" data-delta="1" data-sorc="13">+</button>
+                        <span class = "currentStatValue" id="currentMana13">8</span>
+                        <button id="decMana3" class = "statButton" data-stat="Mana" data-delta="-1" data-sorc="13">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Void</span>
+                        <span class = "statValue" id="Void13">3</span>
+                        <button id="incVoid3" class = "statButton" data-stat="Void" data-delta="1" data-sorc="13">+</button>
+                        <span class = "currentStatValue" id="currentVoid13">5</span>
+                        <button id="decVoid3" class = "statButton" data-stat="Void" data-delta="-1" data-sorc="13">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Move</span>
+                        <span class = "statValue" id="Move13">6</span>
+                        <button id="incMove3" class = "statButton" data-stat="Move" data-delta="1" data-sorc="13">+</button>
+                        <span class = "currentStatValue" id="currentMove13">5</span>
+                        <button id="decMove3" class = "statButton" data-stat="Move" data-delta="-1" data-sorc="13">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Defense</span>
+                        <span class = "statValue" id="Defense13">4</span>
+                        <button id="incDefense3" class = "statButton" data-stat="Defense" data-delta="1" data-sorc="13">+</button>
+                        <span class = "currentStatValue" id="currentDefense13">4</span>
+                        <button id="decDefense3" class = "statButton" data-stat="Defense" data-delta="-1" data-sorc="13">-</button>
+                    </div>
+                </div>
+                <div id="familiarItemsDiv13" class="playItemClass"></div>
+            </div>    
+<p></p>
+<div id ="retainerList5">
+                <div class="sectionTitle">Retainer - 
+                    <span id="retName5"></span>
+                    <button type ="button" id="retInfoButton5" class ="infoButton">i</button>
+                    <div id ="retInfoText5" class ="infoText"></div>
+                </div>
+                
+                <div class="statsRow">
+                        <div class = "statBox">
+                        <span class = "statLabel">Health</span>
+                        <span class = "statValue" id="Health23">23</span>
+                        <button id="incHealth3" class = "statButton" data-stat="Health" data-delta="1" data-sorc="23">+</button>
+                        <span class = "currentStatValue" id="currentHealth23">9</span>
+                        <button id="decHealth3" class = "statButton" data-stat="Health" data-delta="-1" data-sorc="23">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Strength</span>
+                        <span class = "statValue" id="Strength23">5</span>
+                        <button id="incStrength3" class = "statButton" data-stat="Strength" data-delta="1" data-sorc="23">+</button>
+                        <span class = "currentStatValue" id="currentStrength23">5</span>
+                        <button id="decStrength3" class = "statButton" data-stat="Strength" data-delta="-1" data-sorc="23">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Mana</span>
+                        <span class = "statValue" id="Mana23">9</span>
+                        <button id="incMana3" class = "statButton" data-stat="Mana" data-delta="1" data-sorc="23">+</button>
+                        <span class = "currentStatValue" id="currentMana23">8</span>
+                        <button id="decMana3" class = "statButton" data-stat="Mana" data-delta="-1" data-sorc="23">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Void</span>
+                        <span class = "statValue" id="Void23">3</span>
+                        <button id="incVoid3" class = "statButton" data-stat="Void" data-delta="1" data-sorc="23">+</button>
+                        <span class = "currentStatValue" id="currentVoid23">5</span>
+                        <button id="decVoid3" class = "statButton" data-stat="Void" data-delta="-1" data-sorc="23">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Move</span>
+                        <span class = "statValue" id="Move23">6</span>
+                        <button id="incMove3" class = "statButton" data-stat="Move" data-delta="1" data-sorc="23">+</button>
+                        <span class = "currentStatValue" id="currentMove23">5</span>
+                        <button id="decMove3" class = "statButton" data-stat="Move" data-delta="-1" data-sorc="23">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Defense</span>
+                        <span class = "statValue" id="Defense23">4</span>
+                        <button id="incDefense3" class = "statButton" data-stat="Defense" data-delta="1" data-sorc="23">+</button>
+                        <span class = "currentStatValue" id="currentDefense23">4</span>
+                        <button id="decDefense3" class = "statButton" data-stat="Defense" data-delta="-1" data-sorc="23">-</button>
+                    </div>
+                    </div>
+</div>
+<div id ="retainerList6">
+                <div class="sectionTitle">Retainer - 
+                    <span id="retName6"></span>
+                    <button type ="button" id="retInfoButton6" class ="infoButton">i</button>
+                    <div id ="retInfoText6" class ="infoText"></div>
+                </div>
+                
+                <div class="statsRow">
+                        <div class = "statBox">
+                        <span class = "statLabel">Health</span>
+                        <span class = "statValue" id="Health33">13</span>
+                        <button id="incHealth3" class = "statButton" data-stat="Health" data-delta="1" data-sorc="33">+</button>
+                        <span class = "currentStatValue" id="currentHealth33">9</span>
+                        <button id="decHealth3" class = "statButton" data-stat="Health" data-delta="-1" data-sorc="33">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Strength</span>
+                        <span class = "statValue" id="Strength33">5</span>
+                        <button id="incStrength3" class = "statButton" data-stat="Strength" data-delta="1" data-sorc="33">+</button>
+                        <span class = "currentStatValue" id="currentStrength33">5</span>
+                        <button id="decStrength3" class = "statButton" data-stat="Strength" data-delta="-1" data-sorc="33">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Mana</span>
+                        <span class = "statValue" id="Mana33">9</span>
+                        <button id="incMana3" class = "statButton" data-stat="Mana" data-delta="1" data-sorc="33">+</button>
+                        <span class = "currentStatValue" id="currentMana33">8</span>
+                        <button id="decMana3" class = "statButton" data-stat="Mana" data-delta="-1" data-sorc="33">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Void</span>
+                        <span class = "statValue" id="Void33">3</span>
+                        <button id="incVoid3" class = "statButton" data-stat="Void" data-delta="1" data-sorc="33">+</button>
+                        <span class = "currentStatValue" id="currentVoid33">5</span>
+                        <button id="decVoid3" class = "statButton" data-stat="Void" data-delta="-1" data-sorc="33">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Move</span>
+                        <span class = "statValue" id="Move33">6</span>
+                        <button id="incMove3" class = "statButton" data-stat="Move" data-delta="1" data-sorc="33">+</button>
+                        <span class = "currentStatValue" id="currentMove33">5</span>
+                        <button id="decMove3" class = "statButton" data-stat="Move" data-delta="-1" data-sorc="33">-</button>
+                    </div>
+                    <div class = "statBox">
+                        <span class = "statLabel">Defense</span>
+                        <span class = "statValue" id="Defense33">4</span>
+                        <button id="incDefense3" class = "statButton" data-stat="Defense" data-delta="1" data-sorc="33">+</button>
+                        <span class = "currentStatValue" id="currentDefense33">4</span>
+                        <button id="decDefense3" class = "statButton" data-stat="Defense" data-delta="-1" data-sorc="33">-</button>
+                    </div>
+                    </div>
+</div>
+
+<p></p>
+
+    <div class="sectionTitle">Magic Items </div>
+        <div id="magicItemsDiv3" class="playItemClass"></div>
+</div>
+</div>
+
+        <script src="concordData.js"></script>
+        <script src="play.js"></script>
+</body>
+
+</html>

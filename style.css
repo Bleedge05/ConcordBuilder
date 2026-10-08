@@ -241,12 +241,30 @@ button:hover {
     font-weight: bold;
 }
 
+.currentStatValue{
+    margin-top: 3px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    font-size: 15px;
+}
+
+.playItemClass{
+ width: 700px;   
+}
+
+.spellPanelImage{
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 8px;
+}
 
 /* --------------------
    FAMILIARS / RETAINERS / ITEMS
 -------------------- */
 
-.builderSection {
+.buildersection {
     margin-top: 18px;
     padding-top: 14px;
 
@@ -254,7 +272,7 @@ button:hover {
 }
 
 .sectionTitle{
-    margin-bottom: 8 px;
+    margin-bottom: 8px;
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
