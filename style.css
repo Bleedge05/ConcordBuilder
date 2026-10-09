@@ -38,6 +38,9 @@ h1 {
     margin-bottom: 20px;
 }
 
+* {
+    box-sizing: border-box;
+}
 
 /* --------------------
    BASIC CONTROLS
@@ -339,7 +342,7 @@ button:hover {
     }
 
     .statsRow{
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 8px;
     }
     
@@ -356,5 +359,18 @@ button:hover {
     .selectionRow{
         flex-wrap: wrap;
         gap: 8px;
+    }
+
+.itemRow,
+    .retainerRow,
+    .familiarItemRow {
+        flex-wrap: wrap;
+    }
+
+    .itemRow select,
+    .retainerRow select,
+    .familiarItemRow select {
+        width: 100%;
+        max-width: 100%;
     }
 }
