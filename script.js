@@ -6,6 +6,8 @@ const circlePointTotal= document.getElementById("circlePointTotal");
 const pointAllotmentCircle= document.getElementById("pointAllotmentCircle");
 const validCircle= document.getElementById("validCircle");
 const exportCircle = document.getElementById("exportCircle");
+const presets=document.getElementById("presets");
+
 const launchPlay = document.getElementById("launchPlay");
 const circleName = document.getElementById("circleName");
 const clearAll = document.getElementById("clearAll");
@@ -127,6 +129,8 @@ exportCircle.addEventListener("click", function(){
         exportCirclePdf(circle);
 });
 
+presets.addEventListener("change",function() {loadPreconfiguredCircle(presets.value)});
+
 clearAll.addEventListener("click", function(){
         
         for (const select of document.querySelectorAll("select")){
@@ -135,7 +139,8 @@ clearAll.addEventListener("click", function(){
         for (const input of document.querySelectorAll("input")){
                 input.value="";
         }
-
+        sessionStorage.removeItem("concordPlayState");
+        sessionStorage.removeItem("concordCircle");
 
         location.reload()
 });
@@ -1365,8 +1370,93 @@ function delete3rdSorcerer(){
 
 
 }
+
+function rebuildCircleData(){
+        console.log("inside rebuild")
+        const concordCircle = JSON.parse(sessionStorage.getItem("concordCircle"));
+        console.log(concordCircle);
+        for(let xx = 0; xx<=2; xx++){
+
+                //setup main dropdowns
+                const sorcererName = document.getElementById("sorcerer"+Number(xx+1)+"Name");
+                const sorcerer = document.getElementById("sorcerer"+Number(xx+1));
+                const aspect = document.getElementById("aspect"+Number(xx+1));
+                const race = document.getElementById("race"+Number(xx+1));
+                const deity = document.getElementById("deity"+Number(xx+1));
+                const sorcererLevel = document.getElementById("sorcererLevel"+Number(xx+1));
+
+                sorcererName.value = concordCircle.sorcerers[xx]?.name||"Enter Sorcerer Name";
+                sorcerer.value = concordCircle.sorcerers[xx]?.class||"EMPTY";
+                sorcererLevel.value = concordCircle.sorcerers[xx]?.level||"0";
+                aspect.value =  concordCircle.sorcerers[xx]?.aspect||"EMPTY";
+                race.value = concordCircle.sorcerers[xx]?.race||"EMPTY";
+                deity.value = concordCircle.sorcerers[xx]?.deity||"EMPTY";
+                console.log(sorcerer.value);
+
+                //setup familiars
+                if (concordCircle.sorcerers[xx].familiar[0]){
+                        updateFamiliar(Number(xx+1));
+                        const selects = document.querySelectorAll(".familiarSelect");
+                        const newestSelect = selects[selects.length-1];
+                        newestSelect.value=concordCircle.sorcerers[xx].familiar[0];
+
+                        const selectsTrait = document.querySelectorAll(".familiarTrait");
+                        const newestSelectTrait = selectsTrait[selectsTrait.length-1];
+                        newestSelectTrait.value=concordCircle.sorcerers[xx].familiar[1];
+                        const familiarDiv = document.getElementById("familiarList"+Number(xx+1));
+
+                        for(const famItemKey of concordCircle.sorcerers[xx].familiar.slice(2)){
+
+                                addFamiliarItemRow(familiarDiv,Number(xx+1));
+                                const selectsItem = document.querySelectorAll(".familiarItemSelect");
+                                const newestSelect2 = selectsItem[selectsItem.length-1];
+                                newestSelect2.value=famItemKey;
+                                newestSelect2.dispatchEvent(new Event("change", {bubbles: true}));
+                        }
+                }
+
+                //setup retainers
+                for(const retainerKey of concordCircle.sorcerers[xx].retainers){
+                        updateRetainer(Number(xx+1));
+                        const selects = document.querySelectorAll(".retainerSelect");
+                        const newestSelect = selects[selects.length-1];
+                        newestSelect.value=retainerKey;
+                        newestSelect.dispatchEvent(new Event("change", {bubbles: true}));
+                }
+
+                //add items
+                for(const itemKey of concordCircle.sorcerers[xx].items){
+                        updateItem(Number(xx+1));
+                        const selects = document.querySelectorAll(".itemSelect");
+                        const newestSelect = selects[selects.length-1];
+                        newestSelect.value=itemKey;
+                }
+
+
+                //Update Circle calculations for each one
+                if (sorcerer.value!=="EMPTY"){
+                        console.log(xx);
+                        updateCircle(Number(xx+1));
+                }
+        }
+}
+
+function loadPreconfiguredCircle(circleKey){
+        
+        if(circleKey==="EMPTY"){
+                sessionStorage.removeItem("concordCircle");
+                console.log("im here to remove");
+        }else{
+                sessionStorage.setItem("concordCircle", JSON.stringify(preCons[circleKey]));
+        }
+        location.reload();
+}
 //----------------------------------------------------
-//ON LOAD CALL UPDATE
+//ON LOAD CALL UPDATE and load build data if it exists
 //----------------------------------------------------
 
-updateCircle(3);
+if (JSON.parse(sessionStorage.getItem("concordCircle"))){
+        console.log("im here");
+        rebuildCircleData();
+}
+//updateCircle(3);

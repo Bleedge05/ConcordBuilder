@@ -6,31 +6,22 @@
 const returnButton = document.getElementById("returnButton");
 const refreshButton = document.getElementById("refreshButton");
 const collapseButtons=document.querySelectorAll(".collapseButton");
+const createGame=document.getElementById("createGame");
+const gameInfo=document.getElementById("gameInfo");
 
-//const playClass1=document.getElementById("playClass1");
 const sorcererInfoButton1 = document.getElementById("sorcererInfoButton1");
 const sorcererInfoButton2 = document.getElementById("sorcererInfoButton2");
 const sorcererInfoButton3 = document.getElementById("sorcererInfoButton3");
-//const sorcererInfoText1 = document.getElementById("sorcererInfoText1");
 
-
-// const playRace1=document.getElementById("playRace1");
-// const playRace2=document.getElementById("playRace2");
-// const playRace3=document.getElementById("playRace3");
 
 const raceInfoButton1 = document.getElementById("raceInfoButton1");
 const raceInfoButton2 = document.getElementById("raceInfoButton2");
 const raceInfoButton3 = document.getElementById("raceInfoButton3");
 
-//const raceInfoText1 = document.getElementById("raceInfoText1");
-
-//const playDeity1=document.getElementById("playDeity1");
 const deityInfoButton1 = document.getElementById("deityInfoButton1");
 const deityInfoButton2 = document.getElementById("deityInfoButton2");
 const deityInfoButton3 = document.getElementById("deityInfoButton3");
-//const deityInfoText1 = document.getElementById("deityInfoText1");
 
-//const playLevel1=document.getElementById("playLevel1");
 
 const famInfoButton1=document.getElementById("famInfoButton1");
 const famInfoButton2=document.getElementById("famInfoButton2");
@@ -153,6 +144,48 @@ returnButton.addEventListener("click", function(){
 });
 
 refreshButton.addEventListener("click", function() {sessionStorage.removeItem("concordPlayState"), location.reload()});
+
+createGame.addEventListener("click", function(){
+        console.log(createGame.textContent);
+        //first time generate info
+        if (createGame.textContent===" Create Game"){
+                const deployment = document.createElement("img");
+                deployment.classList.add("spellPanelImage");
+                const ritual1 = document.createElement("img");
+                ritual1.classList.add("spellPanelImage");
+                const ritual2 = document.createElement("img");
+                ritual2.classList.add("spellPanelImage");
+                const ritual3 = document.createElement("img");
+                ritual3.classList.add("spellPanelImage");
+                const scenario = document.getElementById("scenario");
+
+                const randomNumber1 = Math.floor(Math.random() * 6) + 1;
+                const randomNumber2 = Math.floor(Math.random() * 6) + 1;
+                const randomNumber3 = Math.floor(Math.random() * 6) + 1;
+                const randomNumber4 = Math.floor(Math.random() * 6) + 1;
+                const randomNumber5 = Math.floor(Math.random() * 3) + 1;
+
+                ritual1.src ="libraries/ritualSmall_"+randomNumber1+".png";
+                ritual2.src ="libraries/ritualMedium_"+randomNumber2+".png";
+                ritual3.src ="libraries/ritualLarge_"+randomNumber3+".png";
+                deployment.src="libraries/deployment_"+randomNumber4+".png";
+                gameInfo.appendChild(deployment);
+                gameInfo.appendChild(ritual1);
+                gameInfo.appendChild(ritual2);
+                gameInfo.appendChild(ritual3);
+                scenario.textContent = scenarios[randomNumber5].name+" - " + scenarios[randomNumber5].rules;
+                createGame.textContent = "Show/Hide";
+        }
+
+        //if not first time, then just show hide the block
+        if (gameInfo.style.display==="none"){
+                console.log("show div");
+                gameInfo.style.display="block";
+        }else{
+                gameInfo.style.display="none";
+                console.log("hide div");
+        }
+});
 
 const statButtons=document.querySelectorAll(".statButton");
 

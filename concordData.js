@@ -11,6 +11,23 @@
 //         defense: calculatedDefense
 // }
 
+const scenarios ={
+        1:{
+                name: "Magical Flux",
+                runeSpacing: "6",
+                rules: "Score 1 point at the end of each turn if you have a model within 2 inches of the center of the board."
+
+        },
+        2:{                
+                name: "Supremancy",
+                runeSpacing: "4",
+                rules: "Score 1 point at the end of each turn if you have at least 1 model in 3 of the 4 table quadrants. A single model may only count for 1 table quadrant."},
+        3:{                
+                name: "Hostile Takeover",
+                runeSpacing: "8",
+                rules: "Score 2 points at the end of each turn if you have at least 1 model in your oppoentn's deployment zone."}
+}
+
 const classes = {
         EMPTY: {
                 name: "EMPTY",
@@ -1075,7 +1092,7 @@ const items = {
                 startingMods: {mana: 2, void: 1},
                 rules: "This model gains +2 Starting Mana and +1 Starting Void."
         },
-        TheKingSCrown: {
+        TheKingsCrown: {
                 name: "The King’s Crown",
                 cost: 10,
                 category: "",
@@ -1660,4 +1677,129 @@ const items = {
                 startingMods: {defense: 1},
                 rules: "This item may only be chosen by models with the Devout of Ghul Thur keyword. This model increases its Starting Defense characteristic by 1."
         }
+};
+
+const preCons = {
+
+    FireMesa: {
+        name: "Envoys of the Fire Mesa",
+
+        sorcerers: [
+            {
+                name: "Steve",
+                class: "Geomancer",
+                race: "Dwarf",
+                deity: "Avar",
+                level: 4,
+
+                items: [
+                    "CharmedIdol"
+                ],
+
+                retainers: [
+                    "Defender",
+                    "Paragon"
+                ],
+
+                familiar: [
+                    "Warden",
+                    "Loyal",
+                    "GemmedHarness"
+                ]
+            },
+
+            {
+                name: "Haldor",
+                class: "Pyromancer",
+                race: "Human",
+                deity: "Ignis",
+                level: 2,
+
+                items: [
+                    "FlameGauntlet",
+                    "DispelScroll",
+                    "PowerStoneI"
+                ],
+
+                retainers: [],
+
+                familiar: []
+            },
+
+            {
+                name: "",
+                class: "",
+                race: "",
+                deity: "",
+                level: "",
+
+                items: [],
+
+                retainers: [],
+
+                familiar: []
+            }
+        ]
+    },
+
+
+    FreezingPlague: {
+        name: "Disciples of the Freezing Plague",
+
+        sorcerers: [
+            {
+                name: "Brakka",
+                class: "Harbinger",
+                race: "Human",
+                deity: "Sorun",
+                level: 4,
+
+                items: [
+                    "StaffOfCruelty",
+                    "DispelScroll",
+                    "StrengthPotion"
+                ],
+
+                retainers: [
+                    "Longbowmen",
+                    "Paragon"
+                ],
+
+                familiar: [
+                    "Stalker",
+                    "Aggressive"
+                ]
+            },
+
+            {
+                name: "Lucan",
+                class: "Cryothurge",
+                race: "Troll",
+                deity: "Mendax",
+                level: 2,
+
+                items: [
+                    "TheKingsCrown"
+                ],
+
+                retainers: [],
+
+                familiar: []
+            },
+
+            {
+                name: "",
+                class: "",
+                race: "",
+                deity: "",
+                level: "",
+
+                items: [],
+
+                retainers: [],
+
+                familiar: []
+            }
+        ]
+    }
 };
