@@ -369,15 +369,20 @@ max-width: 700px;
     }
 
 .itemRow,
-    .retainerRow,
-    .familiarItemRow {
-        flex-wrap: wrap;
-    }
+.retainerRow,
+.familiarItemRow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: nowrap;
+}
 
-    .itemRow select,
-    .retainerRow select,
-    .familiarItemRow select {
-        width: 100%;
-        max-width: 100%;
+.itemRow select,
+.retainerRow select,
+.familiarItemRow select {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+}
     }
 }
