@@ -180,13 +180,15 @@ createGame.addEventListener("click", function(){
                 mapContainer.classList.add("gameMap");
                 const runes = document.createElement("img");
                 runes.classList.add("mapOverlay");
-
+                
+                const ritualContainer=document.createElement("div");
+                ritualContainer.classList.add("ritualRow");
                 const ritual1 = document.createElement("img");
-                ritual1.classList.add("spellPanelImage");
+                //ritual1.classList.add("ritual");
                 const ritual2 = document.createElement("img");
-                ritual2.classList.add("spellPanelImage");
+                //ritual2.classList.add("spellPanelImage");
                 const ritual3 = document.createElement("img");
-                ritual3.classList.add("spellPanelImage");
+                //ritual3.classList.add("spellPanelImage");
                 const scenario = document.getElementById("scenario");
 
                 deployment.src="libraries/deployment_"+randomNumber4+".png";
@@ -200,13 +202,14 @@ createGame.addEventListener("click", function(){
                 mapContainer.appendChild(runes);
                 gameInfo.appendChild(mapContainer);
 
-                gameInfo.appendChild(ritual1);
-                gameInfo.appendChild(ritual2);
-                gameInfo.appendChild(ritual3);
+                ritualContainer.appendChild(ritual1);
+                ritualContainer.appendChild(ritual2);
+                ritualContainer.appendChild(ritual3);
+                gameInfo.appendChild(ritualContainer);
+
                 scenario.textContent = scenarios[randomNumber5].name+" - " + scenarios[randomNumber5].rules;
                 createGame.textContent = "Show/Hide";
-                console.log("saving this:", playState);
-                
+               
                 savePlayState(playState);
         }
 
