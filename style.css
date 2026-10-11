@@ -302,10 +302,13 @@ max-width: 700px;
     gap: 6px;
     margin-top: 8px;
     width: 100%;
+    max-width: 100%;
 }
 
 .ritualRow img {
-    width:calc((100%-12px) / 3);
+    flex: 1 1 0;
+    width:0;
+    min-width:0;
     height:auto;
 }
 /* --------------------
