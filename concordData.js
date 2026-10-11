@@ -1686,7 +1686,7 @@ const preCons = {
 
         sorcerers: [
             {
-                name: "Steve",
+                name: "Haldor",
                 class: "Geomancer",
                 race: "Dwarf",
                 deity: "Avar",
@@ -1709,7 +1709,7 @@ const preCons = {
             },
 
             {
-                name: "Haldor",
+                name: "Steve",
                 class: "Pyromancer",
                 race: "Human",
                 deity: "Ignis",

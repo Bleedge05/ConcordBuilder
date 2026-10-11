@@ -36,6 +36,7 @@ const retInfoButton6=document.getElementById("retInfoButton6");
 
 
 const playState ={
+        gameData:[],
         sorcerers:[
                 {
                         currentHealth:"",
@@ -146,11 +147,40 @@ returnButton.addEventListener("click", function(){
 refreshButton.addEventListener("click", function() {sessionStorage.removeItem("concordPlayState"), location.reload()});
 
 createGame.addEventListener("click", function(){
-        console.log(createGame.textContent);
         //first time generate info
+        const playState =JSON.parse(sessionStorage.getItem("concordPlayState"));
+                let randomNumber1 = Math.floor(Math.random() * 6) + 1;
+                let randomNumber2 = Math.floor(Math.random() * 6) + 1;
+                let randomNumber3 = Math.floor(Math.random() * 6) + 1;
+                let randomNumber4 = Math.floor(Math.random() * 6) + 1;
+                let randomNumber5 = Math.floor(Math.random() * 3) + 1;
+
+
+        if(playState.gameData[0]){
+                console.log("this is what i want: "+playState.gameData[0]);
+                 randomNumber1=playState.gameData[0];
+                 randomNumber2=playState.gameData[1];
+                 randomNumber3=playState.gameData[2];
+                 randomNumber4=playState.gameData[3];
+                 randomNumber5=playState.gameData[4];
+              
+        }else{
+                playState.gameData[0]=randomNumber1;
+                playState.gameData[1]=randomNumber2;
+                playState.gameData[2]=randomNumber3;
+                playState.gameData[3]=randomNumber4;
+                playState.gameData[4]=randomNumber5;
+        }
+        
+
         if (createGame.textContent===" Create Game"){
                 const deployment = document.createElement("img");
-                deployment.classList.add("spellPanelImage");
+                deployment.classList.add("mapBase");
+                const mapContainer = document.createElement("div");
+                mapContainer.classList.add("gameMap");
+                const runes = document.createElement("img");
+                runes.classList.add("mapOverlay");
+
                 const ritual1 = document.createElement("img");
                 ritual1.classList.add("spellPanelImage");
                 const ritual2 = document.createElement("img");
@@ -159,38 +189,39 @@ createGame.addEventListener("click", function(){
                 ritual3.classList.add("spellPanelImage");
                 const scenario = document.getElementById("scenario");
 
-                const randomNumber1 = Math.floor(Math.random() * 6) + 1;
-                const randomNumber2 = Math.floor(Math.random() * 6) + 1;
-                const randomNumber3 = Math.floor(Math.random() * 6) + 1;
-                const randomNumber4 = Math.floor(Math.random() * 6) + 1;
-                const randomNumber5 = Math.floor(Math.random() * 3) + 1;
+                deployment.src="libraries/deployment_"+randomNumber4+".png";
+                runes.src = "libraries/runes_"+randomNumber5+".png";
 
                 ritual1.src ="libraries/ritualSmall_"+randomNumber1+".png";
                 ritual2.src ="libraries/ritualMedium_"+randomNumber2+".png";
                 ritual3.src ="libraries/ritualLarge_"+randomNumber3+".png";
-                deployment.src="libraries/deployment_"+randomNumber4+".png";
-                gameInfo.appendChild(deployment);
+                
+                mapContainer.appendChild(deployment);
+                mapContainer.appendChild(runes);
+                gameInfo.appendChild(mapContainer);
+
                 gameInfo.appendChild(ritual1);
                 gameInfo.appendChild(ritual2);
                 gameInfo.appendChild(ritual3);
                 scenario.textContent = scenarios[randomNumber5].name+" - " + scenarios[randomNumber5].rules;
                 createGame.textContent = "Show/Hide";
+                console.log("saving this:", playState);
+                
+                savePlayState(playState);
         }
 
         //if not first time, then just show hide the block
         if (gameInfo.style.display==="none"){
-                console.log("show div");
                 gameInfo.style.display="block";
         }else{
                 gameInfo.style.display="none";
-                console.log("hide div");
         }
 });
 
 const statButtons=document.querySelectorAll(".statButton");
 
 for (const button of statButtons){
-        button.addEventListener("click", function() {updateStats(button.dataset.stat, Number(button.dataset.delta), Number(button.dataset.sorc)), savePlayState()});
+        button.addEventListener("click", function() {updateStats(button.dataset.stat, Number(button.dataset.delta), Number(button.dataset.sorc)), savePlayState(playState)});
 }
 
 for (const button of collapseButtons){
@@ -321,10 +352,10 @@ function showRetInfo(i){
                 retInfoText.textContent = selectedRetainer.rules;
         }
 }
-function savePlayState(){
+function savePlayState(saveThis){
         console.log("this is what will be saved")
-        console.log(playState);
-        sessionStorage.setItem("concordPlayState", JSON.stringify(playState));
+        console.log(saveThis);  
+        sessionStorage.setItem("concordPlayState", JSON.stringify(saveThis));
 }
 
 function initPlayMode() {
@@ -585,12 +616,16 @@ function initPlayMode() {
                         console.log("this is the index" + sorcererIndex);
                                         const key = boxes.dataset.key;
                                         playState.sorcerers[sorcererIndex].usedItems[key]=boxes.checked;
-                                savePlayState();
+                                savePlayState(playState);
                 });
         }
 
+        if(concordPlayState){
+                createGame.dispatchEvent(new Event("click", {bubbles: true}));
+                gameInfo.style.display="none";
+        }
         if(!concordPlayState){
-                savePlayState()
+                savePlayState(playState)
         }
 }
 
